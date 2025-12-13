@@ -1168,32 +1168,32 @@ class MultiBranchCosineIncrementalNet_adapt_AC(BaseNet):
 
     def update_fc(self, nb_classes, Hidden, cosine_fc = False):
         if cosine_fc:
-            logging.info("Use Cosine model as classifier head.")
+            print("Use Cosine model as classifier head.")
             fc = self.generate_fc(self._feature_dim, 0, nb_classes,cosine_fc).to(self._device)
-            logging.info("Cosine model architecture: {}".format(fc))
+            print("Cosine model architecture: {}".format(fc))
             if self.fc is not None:
                 nb_output = self.fc.out_features
                 weight = copy.deepcopy(self.fc.weight.data)
-                logging.info("Old weight (Cosine FC)", weight.shape)
+                print("Old weight (Cosine FC)", weight.shape)
                 fc.sigma.data = self.fc.sigma.data
                 weight = torch.cat([weight, torch.zeros(nb_classes - nb_output, self._feature_dim).to(self._device)])
-                logging.info("New weight (Cosine FC)", weight.shape)
+                print("New weight (Cosine FC)", weight.shape)
                 fc.weight = nn.Parameter(weight)
             del self.fc
             self.fc = fc
         else:
-            logging.info("Use AC model as classifier head.")
+            print("Use AC model as classifier head.")
             ac_model = self.generate_fc(self._feature_dim, Hidden, nb_classes).to(self._device)
-            logging.info("AC model architecture: {}".format(ac_model))
+            print("AC model architecture: {}".format(ac_model))
             if self.ac_model is not None:
                 nb_output = self.ac_model.out_features
                 hidden_weight = copy.deepcopy(self.ac_model.fc[0].weight.data)
                 ac_model.fc[0].weight = nn.Parameter(hidden_weight.float())
-                logging.info("Hidden weight (AC model)" , hidden_weight.shape)
+                print("Hidden weight (AC model)" , hidden_weight.shape)
                 weight = copy.deepcopy(self.ac_model.fc[-1].weight.data)
-                logging.info("Old weight (AC model)", weight.shape)
+                print("Old weight (AC model)", weight.shape)
                 weight = torch.cat([weight, torch.zeros(nb_classes - nb_output, Hidden).to(self._device)])
-                logging.info("New weight (AC model)", weight.shape)
+                print("New weight (AC model)", weight.shape)
                 ac_model.fc[-1].weight = nn.Parameter(weight.float())
 
             del self.ac_model
@@ -1354,7 +1354,7 @@ class FOSTERNet(nn.Module):
         meannew = torch.mean(newnorm)
         meanold = torch.mean(oldnorm)
         gamma = meanold / meannew * (value ** (old / increment))
-        logging.info("align weights, gamma = {} ".format(gamma))
+        print("align weights, gamma = {} ".format(gamma))
         self.fc.weight.data[-increment:, :] *= gamma
     
     def load_checkpoint(self, args):
@@ -1431,7 +1431,7 @@ class AdaptiveNet(nn.Module):
             self.AdaptiveExtractors[-1].load_state_dict(self.AdaptiveExtractors[-2].state_dict())
 
         if self.out_dim is None:
-            # logging.info(self.AdaptiveExtractors[-1])
+            # print(self.AdaptiveExtractors[-1])
             self.out_dim=self.AdaptiveExtractors[-1].out_dim        
         fc = self.generate_fc(self.feature_dim, nb_classes)             
         if self.fc is not None:

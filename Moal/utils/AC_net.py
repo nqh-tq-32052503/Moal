@@ -658,7 +658,7 @@ class FOSTERNet(nn.Module):
         meannew = torch.mean(newnorm)
         meanold = torch.mean(oldnorm)
         gamma = meanold / meannew * (value ** (old / increment))
-        logging.info("align weights, gamma = {} ".format(gamma))
+        print("align weights, gamma = {} ".format(gamma))
         self.fc.weight.data[-increment:, :] *= gamma
     
     def load_checkpoint(self, args):
@@ -735,7 +735,7 @@ class AdaptiveNet(nn.Module):
             self.AdaptiveExtractors[-1].load_state_dict(self.AdaptiveExtractors[-2].state_dict())
 
         if self.out_dim is None:
-            # logging.info(self.AdaptiveExtractors[-1])
+            # print(self.AdaptiveExtractors[-1])
             self.out_dim=self.AdaptiveExtractors[-1].out_dim        
         fc = self.generate_fc(self.feature_dim, nb_classes)             
         if self.fc is not None:

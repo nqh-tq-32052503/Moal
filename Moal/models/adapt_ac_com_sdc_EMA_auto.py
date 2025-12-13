@@ -73,14 +73,14 @@ class Learner(BaseLearner):
         # self._network.update_fc(self._total_classes)
         if self._cur_task == 0:
             self._network.fc = CosineLinear(self._network.feature_dim, self._total_classes)
-        logging.info("Learning on {}-{}".format(self._known_classes, self._total_classes))
+        print("Learning on {}-{}".format(self._known_classes, self._total_classes))
 
         train_dataset = data_manager.get_dataset(np.arange(self._known_classes, self._total_classes), source="train",
                                                  mode="train", )
         self.train_dataset = train_dataset
         self.data_manager = data_manager
         self.train_loader = DataLoader(train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=num_workers)
-        logging.info("Train dataset size: {}".format(len(train_dataset)))
+        print("Train dataset size: {}".format(len(train_dataset)))
         test_dataset = data_manager.get_dataset(np.arange(0, self._total_classes), source="test", mode="test")
         self.test_loader = DataLoader(test_dataset, batch_size=self.batch_size, shuffle=False, num_workers=num_workers)
 
@@ -95,7 +95,7 @@ class Learner(BaseLearner):
         self._train(self.train_loader, self.test_loader, self.train_loader_for_protonet)
         if len(self._multiple_gpus) > 1:
             self._network = self._network.module
-        logging.info("Finish one task ")
+        print("Finish one task ")
 
     def _train(self, train_loader, test_loader, train_loader_for_protonet):
 
@@ -166,11 +166,11 @@ class Learner(BaseLearner):
         network = MultiBranchCosineIncrementalNet_adapt_AC(self.args, True)
         network.construct_dual_branch_network(self._network)
         self._network = network.to(self._device)
-        logging.info("Constructed dual branch network.")
-        logging.info("New network structure:\n{}".format(self._network))
+        print("Constructed dual branch network.")
+        print("New network structure:\n{}".format(self._network))
 
     def _init_train(self, train_loader, test_loader, optimizer, scheduler):
-        logging.info("Initial training for the first task.")
+        print("Initial training for the first task.")
         for epoch in range(self.args['tuned_epoch']):
             self._network.train()
             losses = 0.0
@@ -202,10 +202,10 @@ class Learner(BaseLearner):
                 train_acc,
                 test_acc,
             )
-            logging.info(info)
+            print(info)
 
     def _progreessive_train(self, train_loader, test_loader, optimizer, scheduler):
-        logging.info("Progressive training for task {}".format(self._cur_task))
+        print("Progressive training for task {}".format(self._cur_task))
 
 
         EMA_model = self._network.copy().freeze()
@@ -247,13 +247,13 @@ class Learner(BaseLearner):
                 train_acc,
                 test_acc,
             )
-            logging.info(info)
+            print(info)
 
         for param, ema_param in zip(EMA_model.backbones[0].parameters(),
                                     self._network.backbones[0].parameters()):
             ema_param.data =  param.data
 
-        logging.info(info)
+        print(info)
 
     def cls_align(self, trainloader, model):
         if hasattr(model, 'module'):
@@ -270,7 +270,7 @@ class Learner(BaseLearner):
         auto_cor = torch.zeros(model.ac_model.fc[-1].weight.size(1), model.ac_model.fc[-1].weight.size(1)).to(
             self._device)
         crs_cor = torch.zeros(model.ac_model.fc[-1].weight.size(1), self._total_classes).to(self._device)
-        logging.info("Starting class alignment...")
+        print("Starting class alignment...")
         with torch.no_grad():
             pbar = tqdm(enumerate(trainloader), desc='Alignment', total=len(trainloader), unit='batch')
             for i, batch in pbar:
@@ -290,13 +290,13 @@ class Learner(BaseLearner):
                 crs_cor += torch.t(new_activation) @ (label_onehot)
 
         embedding_list = torch.cat(embedding_list, dim=0)
-        logging.info("Embedding shape: ", embedding_list.shape)
+        print("Embedding shape: ", embedding_list.shape)
         label_list = torch.cat(label_list, dim=0)
-        logging.info("Label shape", label_list.shape)
+        print("Label shape", label_list.shape)
         Y = target2onehot(label_list, self._total_classes)
-        logging.info("One-hot label shape: ", Y.shape)
+        print("One-hot label shape: ", Y.shape)
         ridge = self.optimise_ridge_parameter(embedding_list, Y)
-        logging.info("gamma {}".format(ridge))
+        print("gamma {}".format(ridge))
 
         print('numpy inverse')
         R = np.mat(auto_cor.cpu().numpy() + ridge * np.eye(model.ac_model.fc[-1].weight.size(1))).I
@@ -307,7 +307,7 @@ class Learner(BaseLearner):
         del R
 
     def optimise_ridge_parameter(self, Features, Y):
-        logging.info('Optimising ridge parameter...')
+        print('Optimising ridge parameter...')
         ridges = 10.0 ** np.arange(-8, 9)
         num_val_samples = int(Features.shape[0] * 0.8)
         losses = []
@@ -322,7 +322,7 @@ class Learner(BaseLearner):
         return ridge
 
     def IL_align(self, trainloader, model):
-        logging.info("Incremental class alignment (Knowledge Memorization)...")
+        print("Incremental class alignment (Knowledge Memorization)...")
         if hasattr(model, 'module'):
             model = model.module
         else:
@@ -350,9 +350,9 @@ class Learner(BaseLearner):
                     new_activation @ R @ new_activation.t()) @ new_activation @ R
 
                 W = W + R @ new_activation.t() @ (label_onehot - new_activation @ W)
-            logging.info("Knowledge Memorization completed.")
-            logging.info("Updated weight matrix W shape: {}".format(W.shape))
-            logging.info("Updated correlation matrix R shape: {}".format(R.shape))
+            print("Knowledge Memorization completed.")
+            print("Updated weight matrix W shape: {}".format(W.shape))
+            print("Updated correlation matrix R shape: {}".format(R.shape))
 
         print('numpy inverse')
         model.ac_model.fc[-1].weight = torch.nn.parameter.Parameter(torch.t(W.float()))
@@ -361,7 +361,7 @@ class Learner(BaseLearner):
 
 
     def _compute_means(self):
-        logging.info("Computing class means and covariance matrices...")
+        print("Computing class means and covariance matrices...")
         with torch.no_grad():
             for class_idx in range(self._known_classes, self._total_classes):
                 data, targets, idx_dataset = self.data_manager.get_dataset(np.arange(class_idx, class_idx + 1),
@@ -374,7 +374,7 @@ class Learner(BaseLearner):
 
                 # 计算协方差矩阵 # Compute covariance matrix
                 cov = np.cov(vectors, rowvar=False)
-                logging.info("Class {} covariance matrix shape: {}".format(class_idx, cov.shape))
+                print("Class {} covariance matrix shape: {}".format(class_idx, cov.shape))
                 self._cov_matrix.append(cov)
 
                 # 提取对角线元素（方差），即各个特征的方差 # Extract diagonal elements (variances) of the covariance matrix
@@ -384,19 +384,19 @@ class Learner(BaseLearner):
                 self._std_deviations_matrix.append(std_deviations)
 
     def _compute_relations(self):
-        logging.info("Computing class relations...")
+        print("Computing class relations...")
         old_means = np.array(self._means[:self._known_classes])
-        logging.info("Old means shape: {}".format(old_means.shape))
+        print("Old means shape: {}".format(old_means.shape))
         new_means = np.array(self._means[self._known_classes:])
-        logging.info("New means shape: {}".format(new_means.shape))
+        print("New means shape: {}".format(new_means.shape))
         self._relations = np.argmax((old_means / np.linalg.norm(old_means, axis=1)[:, None]) @ (
                 new_means / np.linalg.norm(new_means, axis=1)[:, None]).T, axis=1) + self._known_classes
-        logging.info("Class relations: {}".format(self._relations))
+        print("Class relations: {}".format(self._relations))
 
     def extract_prototype(self, loader):
         self._network.eval()
         vectors, targets = [], []
-        logging.info("Extracting prototypes...")
+        print("Extracting prototypes...")
         for batch in tqdm(loader):
             _, _inputs, _targets = batch
             _targets = _targets.numpy()
@@ -404,16 +404,16 @@ class Learner(BaseLearner):
             vectors.append(_vectors)
             targets.append(_targets)
         return_vectors = np.concatenate(vectors)
-        logging.info('Extracted vectors shape:', return_vectors.shape, return_vectors.dtype)
+        print('Extracted vectors shape:', return_vectors.shape, return_vectors.dtype)
         return_targets = np.concatenate(targets)
-        logging.info('Extracted targets shape:', return_targets.shape, return_targets.dtype)
+        print('Extracted targets shape:', return_targets.shape, return_targets.dtype)
         return return_vectors, return_targets
 
     def _build_feature_set(self):
-        logging.info("Building feature dataset...")
+        print("Building feature dataset...")
         self.vectors_train = []
         self.labels_train = []
-        logging.info("Extract prototypes for known classes...")
+        print("Extract prototypes for known classes...")
         for class_idx in range(self._known_classes, self._total_classes):
             data, targets, idx_dataset = self.data_manager.get_dataset(np.arange(class_idx, class_idx + 1),
                                                                        source='train',
@@ -422,7 +422,7 @@ class Learner(BaseLearner):
             vectors, _ = self.extract_prototype(idx_loader)
             self.vectors_train.append(vectors)
             self.labels_train.append([class_idx] * len(vectors))
-        logging.info("Generating pseudo-features for old classes from relations...")
+        print("Generating pseudo-features for old classes from relations...")
         for class_idx in range(0, self._known_classes):
             new_idx = self._relations[class_idx]
             self.vectors_train.append(
@@ -431,16 +431,16 @@ class Learner(BaseLearner):
 
         self.vectors_train = np.concatenate(self.vectors_train)
         self.labels_train = np.concatenate(self.labels_train)
-        logging.info("Total feature dataset size: {}".format(self.vectors_train.shape[0]))
-        logging.info("Feature dataset dimension: {}".format(self.vectors_train.shape[1]))
-        logging.info("Label dataset size: {}".format(self.labels_train.shape[0]))
-        logging.info("Label dataset classes: {}".format(np.unique(self.labels_train)))
+        print("Total feature dataset size: {}".format(self.vectors_train.shape[0]))
+        print("Feature dataset dimension: {}".format(self.vectors_train.shape[1]))
+        print("Label dataset size: {}".format(self.labels_train.shape[0]))
+        print("Label dataset classes: {}".format(np.unique(self.labels_train)))
         self._feature_trainset = FeatureDataset(self.vectors_train, self.labels_train)
         self._feature_trainset = DataLoader(self._feature_trainset, batch_size=self.batch_size, shuffle=True, num_workers=num_workers)
 
 
     def cali_weight(self, cali_pseudo_feature, model):
-        logging.info("Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...")
+        print("Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...")
         if hasattr(model, 'module'):
             model = model.module
         else:
@@ -484,7 +484,7 @@ class Learner(BaseLearner):
         del R
 
     def cali_prototye_model(self,train_loader):
-        logging.info("Calibrating prototype model (Prototype correction - Knowledge Rumination)...")
+        print("Calibrating prototype model (Prototype correction - Knowledge Rumination)...")
         with torch.no_grad():
             old_vectors, vectors, targets = [], [], []
 
@@ -531,7 +531,7 @@ class Learner(BaseLearner):
         # 保存训练过程中的最好模型
         best_loss = float('inf')  # 初始化为无穷大，假设损失越小越好  
         best_model_wts = None  
-        logging.info("开始 修正 prototype")
+        print("开始 修正 prototype")
         for _, epoch in enumerate(prog_bar):
             calimodel.train()
             running_loss = 0.0 
@@ -563,7 +563,7 @@ class Learner(BaseLearner):
                 #print(f'Epoch {epoch+1}, Loss: {epoch_loss:.4f}, Best model updated!')  
                 best_loss = test_loss  
                 best_model_wts = copy.deepcopy(calimodel.state_dict()) 
-        logging.info("best_loss: {}".format(best_loss))
+        print("best_loss: {}".format(best_loss))
         # 选取最好参数 
         calimodel.load_state_dict(best_model_wts)  
         calimodel.eval()

@@ -37,7 +37,7 @@ def _train(args):
     )
 
     logging.basicConfig(
-        level=logging.INFO,
+        level=print,
         format="%(asctime)s [%(filename)s] => %(message)s",
         handlers=[
             logging.FileHandler(filename=logfilename + ".log"),
@@ -66,8 +66,8 @@ def _train(args):
 
     all_his_acc = []
     for task in range(data_manager.nb_tasks):
-        logging.info("All params: {}".format(count_parameters(model._network)))
-        logging.info(
+        print("All params: {}".format(count_parameters(model._network)))
+        print(
             "Trainable params: {}".format(count_parameters(model._network, True))
         )
         model.incremental_train(data_manager)
@@ -75,8 +75,8 @@ def _train(args):
         model.after_task()
 
         if nme_accy is not None:
-            logging.info("CNN: {}".format(cnn_accy["grouped"]))
-            logging.info("NME: {}".format(nme_accy["grouped"]))
+            print("CNN: {}".format(cnn_accy["grouped"]))
+            print("NME: {}".format(nme_accy["grouped"]))
 
             all_his_acc.append(cnn_accy["grouped"].values())
             cnn_curve["top1"].append(cnn_accy["top1"])
@@ -85,19 +85,19 @@ def _train(args):
             nme_curve["top1"].append(nme_accy["top1"])
             nme_curve["top5"].append(nme_accy["top5"])
 
-            logging.info("CNN top1 curve: {}".format(cnn_curve["top1"]))
-            logging.info("CNN top5 curve: {}".format(cnn_curve["top5"]))
-            logging.info("NME top1 curve: {}".format(nme_curve["top1"]))
-            logging.info("NME top5 curve: {}\n".format(nme_curve["top5"]))
+            print("CNN top1 curve: {}".format(cnn_curve["top1"]))
+            print("CNN top5 curve: {}".format(cnn_curve["top5"]))
+            print("NME top1 curve: {}".format(nme_curve["top1"]))
+            print("NME top5 curve: {}\n".format(nme_curve["top5"]))
 
             print('Average Accuracy (CNN):', sum(cnn_curve["top1"])/len(cnn_curve["top1"]))
             print('Average Accuracy (NME):', sum(nme_curve["top1"])/len(nme_curve["top1"]))
 
-            logging.info("Average Accuracy (CNN): {}".format(sum(cnn_curve["top1"])/len(cnn_curve["top1"])))
-            logging.info("Average Accuracy (NME): {}".format(sum(nme_curve["top1"])/len(nme_curve["top1"])))
+            print("Average Accuracy (CNN): {}".format(sum(cnn_curve["top1"])/len(cnn_curve["top1"])))
+            print("Average Accuracy (NME): {}".format(sum(nme_curve["top1"])/len(nme_curve["top1"])))
         else:
-            logging.info("No NME accuracy.")
-            logging.info("CNN: {}".format(cnn_accy["grouped"]))
+            print("No NME accuracy.")
+            print("CNN: {}".format(cnn_accy["grouped"]))
 
             cnn_accy["grouped"].pop('total')
             cnn_accy["grouped"].pop('old')
@@ -107,12 +107,12 @@ def _train(args):
             cnn_curve["top1"].append(cnn_accy["top1"])
             cnn_curve["top5"].append(cnn_accy["top5"])
 
-            logging.info("CNN top1 curve: {}".format(cnn_curve["top1"]))
-            logging.info("CNN top5 curve: {}\n".format(cnn_curve["top5"]))
+            print("CNN top1 curve: {}".format(cnn_curve["top1"]))
+            print("CNN top5 curve: {}\n".format(cnn_curve["top5"]))
 
             print('Average Accuracy (CNN):', sum(cnn_curve["top1"])/len(cnn_curve["top1"]))
-            logging.info("Average Accuracy (CNN): {} \n".format(sum(cnn_curve["top1"])/len(cnn_curve["top1"])))
-    logging.info("All History Accuracy (CNN): {} \n".format(all_his_acc))
+            print("Average Accuracy (CNN): {} \n".format(sum(cnn_curve["top1"])/len(cnn_curve["top1"])))
+    print("All History Accuracy (CNN): {} \n".format(all_his_acc))
 
     
 def _set_device(args):
@@ -140,4 +140,4 @@ def _set_random(seed=1):
 
 def print_args(args):
     for key, value in args.items():
-        logging.info("{}: {}".format(key, value))
+        print("{}: {}".format(key, value))
