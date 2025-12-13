@@ -171,8 +171,7 @@ class Learner(BaseLearner):
 
     def _init_train(self, train_loader, test_loader, optimizer, scheduler):
         logging.info("Initial training for the first task.")
-        prog_bar = tqdm(range(self.args['tuned_epoch']))
-        for _, epoch in enumerate(prog_bar):
+        for epoch in range(self.args['tuned_epoch']):
             self._network.train()
             losses = 0.0
             correct, total = 0, 0
@@ -203,19 +202,16 @@ class Learner(BaseLearner):
                 train_acc,
                 test_acc,
             )
-            prog_bar.set_description(info)
-
-        logging.info(info)
+            logging.info(info)
 
     def _progreessive_train(self, train_loader, test_loader, optimizer, scheduler):
         logging.info("Progressive training for task {}".format(self._cur_task))
-        prog_bar = tqdm(range(self.args['progreesive_epoch']))
 
 
         EMA_model = self._network.copy().freeze()
         alpha = self.args['alpha']
 
-        for _, epoch in enumerate(prog_bar):
+        for epoch in range(self.args['progreesive_epoch']):
             self._network.train()
             losses = 0.0
             correct, total = 0, 0
@@ -251,7 +247,7 @@ class Learner(BaseLearner):
                 train_acc,
                 test_acc,
             )
-            prog_bar.set_description(info)
+            logging.info(info)
 
         for param, ema_param in zip(EMA_model.backbones[0].parameters(),
                                     self._network.backbones[0].parameters()):
