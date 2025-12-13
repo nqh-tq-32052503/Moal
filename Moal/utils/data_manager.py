@@ -1,4 +1,5 @@
 import logging
+import os
 import numpy as np
 from PIL import Image
 from torch.utils.data import Dataset
@@ -7,9 +8,12 @@ from utils.data import iCIFAR10, iCIFAR100, iImageNet100, iImageNet1000, iCIFAR2
 
 
 class DataManager(object):
-    def __init__(self, dataset_name, shuffle, seed, init_cls, increment, args):
+    def __init__(self, dataset_name, shuffle, seed, init_cls, increment, args, data_dir=None):
         self.args = args
         self.dataset_name = dataset_name
+        self.data_dir = data_dir
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
         self._setup_data(dataset_name, shuffle, seed)
         assert init_cls <= len(self._class_order), "No enough classes."
         self._increments = [init_cls]
@@ -138,7 +142,7 @@ class DataManager(object):
 
     def _setup_data(self, dataset_name, shuffle, seed):
         idata = _get_idata(dataset_name, self.args)
-        idata.download_data()
+        idata.download_data(self.data_dir)
 
         # Data
         self._train_data, self._train_targets = idata.train_data, idata.train_targets

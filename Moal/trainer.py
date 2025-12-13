@@ -55,7 +55,7 @@ def _train(args):
         args["seed"],
         args["init_cls"],
         args["increment"],
-        args,
+        args
     )
     
     args["nb_classes"] = data_manager.nb_classes # update args

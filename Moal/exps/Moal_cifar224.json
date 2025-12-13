@@ -7,10 +7,10 @@
     "shuffle": true,
     "init_cls": 10,
     "increment": 10,
-    "model_name": "MoAL",
+    "model_name": "adapt_ac_com_sdc_ema_auto",
     "backbone_type": "pretrained_vit_b16_224_adapter",
     "device": [
-        "1"
+        "cuda"
     ],
     "seed": [
         1993
@@ -20,8 +20,8 @@
     "lambda_fkd": 1,
     "cali_weight": 1.0,
     "alpha": 0.999,
-    "tuned_epoch": 80,
-    "progreesive_epoch": 80,
+    "tuned_epoch": 2,
+    "progreesive_epoch": 2,
     "init_lr": 0.01,
     "progressive_lr": 0.01,
     "batch_size": 48,

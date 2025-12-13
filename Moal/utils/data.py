@@ -139,9 +139,9 @@ class iCIFAR224(iData):
         ]
 
         self.class_order = np.arange(100).tolist()
-    def download_data(self):
-        train_dataset = datasets.cifar.CIFAR100("/root/autodl-tmp/data/cifar224", train=True, download=True)
-        test_dataset = datasets.cifar.CIFAR100("/root/autodl-tmp/data/cifar224", train=False, download=True)
+    def download_data(self,data_dir="/root/autodl-tmp/data/cifar224"):
+        train_dataset = datasets.cifar.CIFAR100(data_dir, train=True, download=True)
+        test_dataset = datasets.cifar.CIFAR100(data_dir, train=False, download=True)
         self.train_data, self.train_targets = train_dataset.data, np.array(
             train_dataset.targets
         )

@@ -1168,26 +1168,32 @@ class MultiBranchCosineIncrementalNet_adapt_AC(BaseNet):
 
     def update_fc(self, nb_classes, Hidden, cosine_fc = False):
         if cosine_fc:
+            logging.info("Use Cosine model as classifier head.")
             fc = self.generate_fc(self._feature_dim, 0, nb_classes,cosine_fc).to(self._device)
+            logging.info("Cosine model architecture: {}".format(fc))
             if self.fc is not None:
                 nb_output = self.fc.out_features
                 weight = copy.deepcopy(self.fc.weight.data)
+                logging.info("Old weight (Cosine FC)", weight.shape)
                 fc.sigma.data = self.fc.sigma.data
                 weight = torch.cat([weight, torch.zeros(nb_classes - nb_output, self._feature_dim).to(self._device)])
+                logging.info("New weight (Cosine FC)", weight.shape)
                 fc.weight = nn.Parameter(weight)
             del self.fc
             self.fc = fc
         else:
+            logging.info("Use AC model as classifier head.")
             ac_model = self.generate_fc(self._feature_dim, Hidden, nb_classes).to(self._device)
-
+            logging.info("AC model architecture: {}".format(ac_model))
             if self.ac_model is not None:
                 nb_output = self.ac_model.out_features
                 hidden_weight = copy.deepcopy(self.ac_model.fc[0].weight.data)
                 ac_model.fc[0].weight = nn.Parameter(hidden_weight.float())
-
+                logging.info("Hidden weight (AC model)" , hidden_weight.shape)
                 weight = copy.deepcopy(self.ac_model.fc[-1].weight.data)
+                logging.info("Old weight (AC model)", weight.shape)
                 weight = torch.cat([weight, torch.zeros(nb_classes - nb_output, Hidden).to(self._device)])
-
+                logging.info("New weight (AC model)", weight.shape)
                 ac_model.fc[-1].weight = nn.Parameter(weight.float())
 
             del self.ac_model
