@@ -353,7 +353,28 @@ class VisionTransformer(nn.Module):
 #     return model
 
 
+def vit_base_patch16_224_bilora(pretrained=True, **kwargs):
+    from Moal.models.bilora import VisionTransformerBiLoRA
+    model = VisionTransformerBiLoRA(patch_size=16, embed_dim=768, depth=12, num_heads=12, mlp_ratio=4, qkv_bias=True,
+        norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
 
+    if pretrained:
+        import timm
+        variant = 'vit_base_patch16_224.augreg_in21k_ft_in1k'
+        pretrained_vit = timm.create_model(variant, pretrained=True)
+        pretrained_state = pretrained_vit.state_dict()
+        incompatible = model.load_state_dict(pretrained_state, strict=False)
+
+        missing_keys = set(incompatible.missing_keys)
+        unexpected_keys = set(incompatible.unexpected_keys)
+
+        # 4. Freeze các param được match
+        for name, param in model.named_parameters():
+            if name not in missing_keys:
+                # key match giữa model và pretrained
+                param.requires_grad = False
+        return model
+    return model
 
 def \
         vit_base_patch16_224_adapter(pretrained=False, **kwargs):

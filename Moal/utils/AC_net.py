@@ -77,6 +77,9 @@ def get_backbone(args, pretrained=False):
                 model = vision_transformer_adapter.vit_base_patch16_224_in21k_adapter(num_classes=0,
                     global_pool=False, drop_path_rate=0.0, tuning_config=tuning_config)
                 model.out_dim=768
+            elif name == "vit_base_patch16_224_bilora_adapter":
+                model = vision_transformer_adapter.vit_base_patch16_224_bilora(pretrained=True)
+                model.out_dim=768
             else:
                 raise NotImplementedError("Unknown type {}".format(name))
             return model.eval()
