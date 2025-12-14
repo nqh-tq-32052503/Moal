@@ -12,6 +12,7 @@ from models.base import BaseLearner
 from backbone.linears import CosineLinear
 from utils.toolkit import target2onehot, tensor2numpy
 import copy
+from scipy.linalg import solve
 from torch.utils.data import DataLoader, Dataset,TensorDataset,random_split
 
 num_workers = 8
@@ -522,79 +523,85 @@ class Learner(BaseLearner):
                 vectors.append(feature)  
         E_old = np.concatenate(old_vectors)
         E_new = np.concatenate(vectors)
-        # 准备训练数据 
-        X_tensor = torch.from_numpy(E_old).to(torch.float32)
+        A = E_old.copy()
+        B = E_new.copy()
+        ATA = A.T @ A
+        ATB = A.T @ B
+        W = solve(ATA, ATB)  # 使用 scipy.linalg.solve 求解线性方程组
+        # # 准备训练数据 
+        # X_tensor = torch.from_numpy(E_old).to(torch.float32)
 
-        y_tensor = torch.from_numpy(E_new).to(torch.float32)
+        # y_tensor = torch.from_numpy(E_new).to(torch.float32)
 
-        dataset = TensorDataset(X_tensor, y_tensor)
+        # dataset = TensorDataset(X_tensor, y_tensor)
         
-        # 划分训练集和测试集
-        total_size = len(dataset)
-        train_size = int(0.9 * total_size)  # 90% 为训练集
-        test_size = total_size - train_size  # 剩余的 10% 为测试集
-        train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
-        # 创建数据加载器
-        train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-        test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+        # # 划分训练集和测试集
+        # total_size = len(dataset)
+        # train_size = int(0.9 * total_size)  # 90% 为训练集
+        # test_size = total_size - train_size  # 剩余的 10% 为测试集
+        # train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
+        # # 创建数据加载器
+        # train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+        # test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
         # 构造模型参数 && 模型初始化 
-        in_features = E_old[0].shape[0]  # 输入维度
-        out_dim = E_new[0].shape[0]       # 输出维度 
-        calimodel = SimpleNN(in_features,out_dim)
-        calimodel = calimodel.to(self._device)
-        #calimodel.to(torch.float32) 
-        # 设置 学习率 优化器 
-        optimizer =optim.SGD(calimodel.parameters(), momentum=0.9, lr=0.01,
-            weight_decay=0.0005)
-        scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=10,
-            eta_min=0)     
-        prog_bar = tqdm(range(1000))
+        # in_features = E_old[0].shape[0]  # 输入维度
+        # out_dim = E_new[0].shape[0]       # 输出维度 
+        # calimodel = SimpleNN(in_features,out_dim)
+        # calimodel = calimodel.to(self._device)
+        # #calimodel.to(torch.float32) 
+        # # 设置 学习率 优化器 
+        # optimizer =optim.SGD(calimodel.parameters(), momentum=0.9, lr=0.01,
+        #     weight_decay=0.0005)
+        # scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=10,
+        #     eta_min=0)     
+        # prog_bar = tqdm(range(1000))
         
-        # 保存训练过程中的最好模型
-        best_loss = float('inf')  # 初始化为无穷大，假设损失越小越好  
-        best_model_wts = None  
-        print("开始 修正 prototype")
-        for _, epoch in enumerate(prog_bar):
-            calimodel.train()
-            running_loss = 0.0 
-            for i, (inputs, targets) in enumerate(train_dataloader):
-                inputs, targets = inputs.to(self._device), targets.to(self._device)
-                #logits = calimodel(inputs)["logits"]
-                logits = calimodel(inputs)
-                criterion = nn.MSELoss()
-                # 计算二次范数损失
-                loss = criterion(logits, targets)
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
-                running_loss += loss.item() * inputs.size(0)
-            # 计算每个epoch的平均损失 
-            scheduler.step() 
-            calimodel.eval()
-            test_loss = 0.0
-            #correct = 0
-            with torch.no_grad():
-                for inputs, targets in test_dataloader:
-                    inputs, targets = inputs.to(self._device), targets.to(self._device)
-                    logits = calimodel(inputs)
-                    criterion = nn.MSELoss()
-                    test_loss += criterion(logits, targets).item() * inputs.size(0)
+        # # 保存训练过程中的最好模型
+        # best_loss = float('inf')  # 初始化为无穷大，假设损失越小越好  
+        # best_model_wts = None  
+        # print("开始 修正 prototype")
+        # for _, epoch in enumerate(prog_bar):
+        #     calimodel.train()
+        #     running_loss = 0.0 
+        #     for i, (inputs, targets) in enumerate(train_dataloader):
+        #         inputs, targets = inputs.to(self._device), targets.to(self._device)
+        #         #logits = calimodel(inputs)["logits"]
+        #         logits = calimodel(inputs)
+        #         criterion = nn.MSELoss()
+        #         # 计算二次范数损失
+        #         loss = criterion(logits, targets)
+        #         optimizer.zero_grad()
+        #         loss.backward()
+        #         optimizer.step()
+        #         running_loss += loss.item() * inputs.size(0)
+        #     # 计算每个epoch的平均损失 
+        #     scheduler.step() 
+        #     calimodel.eval()
+        #     test_loss = 0.0
+        #     #correct = 0
+        #     with torch.no_grad():
+        #         for inputs, targets in test_dataloader:
+        #             inputs, targets = inputs.to(self._device), targets.to(self._device)
+        #             logits = calimodel(inputs)
+        #             criterion = nn.MSELoss()
+        #             test_loss += criterion(logits, targets).item() * inputs.size(0)
     
-            test_loss /= len(test_dataset)
-            if test_loss < best_loss:  
-                #print(f'Epoch {epoch+1}, Loss: {epoch_loss:.4f}, Best model updated!')  
-                best_loss = test_loss  
-                best_model_wts = copy.deepcopy(calimodel.state_dict()) 
-        print("best_loss: {}".format(best_loss))
-        # 选取最好参数 
-        calimodel.load_state_dict(best_model_wts)  
-        calimodel.eval()
-        X_test = torch.from_numpy(np.array(self._means)[:self._known_classes]).to(torch.float64)
+        #     test_loss /= len(test_dataset)
+        #     if test_loss < best_loss:  
+        #         #print(f'Epoch {epoch+1}, Loss: {epoch_loss:.4f}, Best model updated!')  
+        #         best_loss = test_loss  
+        #         best_model_wts = copy.deepcopy(calimodel.state_dict()) 
+        # print("best_loss: {}".format(best_loss))
+        # # 选取最好参数 
+        # calimodel.load_state_dict(best_model_wts)  
+        # calimodel.eval()
+        X_test = np.array(self._means)[:self._known_classes]
+        Y_test = X_test @ W  # 预测输出
         #Y_test = calimodel(X_test.to(self._device))["logits"]
-        Y_test = calimodel(X_test.to(self._device))
-        Y_test = Y_test.to("cpu")  
-        Y_test = Y_test.detach().numpy().tolist()
-        self._means[:self._known_classes] = Y_test
+        # Y_test = calimodel(X_test.to(self._device))
+        # Y_test = Y_test.to("cpu")  
+        # Y_test = Y_test.detach().numpy().tolist()
+        self._means[:self._known_classes] = Y_test.tolist()
 
 
 

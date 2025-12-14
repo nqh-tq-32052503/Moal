@@ -1,0 +1,2867 @@
+Learning on 0-10
+Train dataset size: 5000
+/usr/local/lib/python3.11/dist-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+114,877,825 total parameters.
+29,079,169 training parameters.
+backbone.cls_token_grow 3840000
+backbone.pos_embed_grow 918528
+backbone.blocks.0.attn.lora_A_k.0.weight 49152
+backbone.blocks.0.attn.lora_A_k.1.weight 49152
+backbone.blocks.0.attn.lora_A_k.2.weight 49152
+backbone.blocks.0.attn.lora_A_k.3.weight 49152
+backbone.blocks.0.attn.lora_A_k.4.weight 49152
+backbone.blocks.0.attn.lora_A_k.5.weight 49152
+backbone.blocks.0.attn.lora_A_k.6.weight 49152
+backbone.blocks.0.attn.lora_A_k.7.weight 49152
+backbone.blocks.0.attn.lora_A_k.8.weight 49152
+backbone.blocks.0.attn.lora_A_k.9.weight 49152
+backbone.blocks.0.attn.lora_B_k.0.weight 49152
+backbone.blocks.0.attn.lora_B_k.1.weight 49152
+backbone.blocks.0.attn.lora_B_k.2.weight 49152
+backbone.blocks.0.attn.lora_B_k.3.weight 49152
+backbone.blocks.0.attn.lora_B_k.4.weight 49152
+backbone.blocks.0.attn.lora_B_k.5.weight 49152
+backbone.blocks.0.attn.lora_B_k.6.weight 49152
+backbone.blocks.0.attn.lora_B_k.7.weight 49152
+backbone.blocks.0.attn.lora_B_k.8.weight 49152
+backbone.blocks.0.attn.lora_B_k.9.weight 49152
+backbone.blocks.0.attn.lora_A_v.0.weight 49152
+backbone.blocks.0.attn.lora_A_v.1.weight 49152
+backbone.blocks.0.attn.lora_A_v.2.weight 49152
+backbone.blocks.0.attn.lora_A_v.3.weight 49152
+backbone.blocks.0.attn.lora_A_v.4.weight 49152
+backbone.blocks.0.attn.lora_A_v.5.weight 49152
+backbone.blocks.0.attn.lora_A_v.6.weight 49152
+backbone.blocks.0.attn.lora_A_v.7.weight 49152
+backbone.blocks.0.attn.lora_A_v.8.weight 49152
+backbone.blocks.0.attn.lora_A_v.9.weight 49152
+backbone.blocks.0.attn.lora_B_v.0.weight 49152
+backbone.blocks.0.attn.lora_B_v.1.weight 49152
+backbone.blocks.0.attn.lora_B_v.2.weight 49152
+backbone.blocks.0.attn.lora_B_v.3.weight 49152
+backbone.blocks.0.attn.lora_B_v.4.weight 49152
+backbone.blocks.0.attn.lora_B_v.5.weight 49152
+backbone.blocks.0.attn.lora_B_v.6.weight 49152
+backbone.blocks.0.attn.lora_B_v.7.weight 49152
+backbone.blocks.0.attn.lora_B_v.8.weight 49152
+backbone.blocks.0.attn.lora_B_v.9.weight 49152
+backbone.blocks.0.attn.coef_k.0 3000
+backbone.blocks.0.attn.coef_k.1 3000
+backbone.blocks.0.attn.coef_k.2 3000
+backbone.blocks.0.attn.coef_k.3 3000
+backbone.blocks.0.attn.coef_k.4 3000
+backbone.blocks.0.attn.coef_k.5 3000
+backbone.blocks.0.attn.coef_k.6 3000
+backbone.blocks.0.attn.coef_k.7 3000
+backbone.blocks.0.attn.coef_k.8 3000
+backbone.blocks.0.attn.coef_k.9 3000
+backbone.blocks.0.attn.coef_v.0 3000
+backbone.blocks.0.attn.coef_v.1 3000
+backbone.blocks.0.attn.coef_v.2 3000
+backbone.blocks.0.attn.coef_v.3 3000
+backbone.blocks.0.attn.coef_v.4 3000
+backbone.blocks.0.attn.coef_v.5 3000
+backbone.blocks.0.attn.coef_v.6 3000
+backbone.blocks.0.attn.coef_v.7 3000
+backbone.blocks.0.attn.coef_v.8 3000
+backbone.blocks.0.attn.coef_v.9 3000
+backbone.blocks.1.attn.lora_A_k.0.weight 49152
+backbone.blocks.1.attn.lora_A_k.1.weight 49152
+backbone.blocks.1.attn.lora_A_k.2.weight 49152
+backbone.blocks.1.attn.lora_A_k.3.weight 49152
+backbone.blocks.1.attn.lora_A_k.4.weight 49152
+backbone.blocks.1.attn.lora_A_k.5.weight 49152
+backbone.blocks.1.attn.lora_A_k.6.weight 49152
+backbone.blocks.1.attn.lora_A_k.7.weight 49152
+backbone.blocks.1.attn.lora_A_k.8.weight 49152
+backbone.blocks.1.attn.lora_A_k.9.weight 49152
+backbone.blocks.1.attn.lora_B_k.0.weight 49152
+backbone.blocks.1.attn.lora_B_k.1.weight 49152
+backbone.blocks.1.attn.lora_B_k.2.weight 49152
+backbone.blocks.1.attn.lora_B_k.3.weight 49152
+backbone.blocks.1.attn.lora_B_k.4.weight 49152
+backbone.blocks.1.attn.lora_B_k.5.weight 49152
+backbone.blocks.1.attn.lora_B_k.6.weight 49152
+backbone.blocks.1.attn.lora_B_k.7.weight 49152
+backbone.blocks.1.attn.lora_B_k.8.weight 49152
+backbone.blocks.1.attn.lora_B_k.9.weight 49152
+backbone.blocks.1.attn.lora_A_v.0.weight 49152
+backbone.blocks.1.attn.lora_A_v.1.weight 49152
+backbone.blocks.1.attn.lora_A_v.2.weight 49152
+backbone.blocks.1.attn.lora_A_v.3.weight 49152
+backbone.blocks.1.attn.lora_A_v.4.weight 49152
+backbone.blocks.1.attn.lora_A_v.5.weight 49152
+backbone.blocks.1.attn.lora_A_v.6.weight 49152
+backbone.blocks.1.attn.lora_A_v.7.weight 49152
+backbone.blocks.1.attn.lora_A_v.8.weight 49152
+backbone.blocks.1.attn.lora_A_v.9.weight 49152
+backbone.blocks.1.attn.lora_B_v.0.weight 49152
+backbone.blocks.1.attn.lora_B_v.1.weight 49152
+backbone.blocks.1.attn.lora_B_v.2.weight 49152
+backbone.blocks.1.attn.lora_B_v.3.weight 49152
+backbone.blocks.1.attn.lora_B_v.4.weight 49152
+backbone.blocks.1.attn.lora_B_v.5.weight 49152
+backbone.blocks.1.attn.lora_B_v.6.weight 49152
+backbone.blocks.1.attn.lora_B_v.7.weight 49152
+backbone.blocks.1.attn.lora_B_v.8.weight 49152
+backbone.blocks.1.attn.lora_B_v.9.weight 49152
+backbone.blocks.1.attn.coef_k.0 3000
+backbone.blocks.1.attn.coef_k.1 3000
+backbone.blocks.1.attn.coef_k.2 3000
+backbone.blocks.1.attn.coef_k.3 3000
+backbone.blocks.1.attn.coef_k.4 3000
+backbone.blocks.1.attn.coef_k.5 3000
+backbone.blocks.1.attn.coef_k.6 3000
+backbone.blocks.1.attn.coef_k.7 3000
+backbone.blocks.1.attn.coef_k.8 3000
+backbone.blocks.1.attn.coef_k.9 3000
+backbone.blocks.1.attn.coef_v.0 3000
+backbone.blocks.1.attn.coef_v.1 3000
+backbone.blocks.1.attn.coef_v.2 3000
+backbone.blocks.1.attn.coef_v.3 3000
+backbone.blocks.1.attn.coef_v.4 3000
+backbone.blocks.1.attn.coef_v.5 3000
+backbone.blocks.1.attn.coef_v.6 3000
+backbone.blocks.1.attn.coef_v.7 3000
+backbone.blocks.1.attn.coef_v.8 3000
+backbone.blocks.1.attn.coef_v.9 3000
+backbone.blocks.2.attn.lora_A_k.0.weight 49152
+backbone.blocks.2.attn.lora_A_k.1.weight 49152
+backbone.blocks.2.attn.lora_A_k.2.weight 49152
+backbone.blocks.2.attn.lora_A_k.3.weight 49152
+backbone.blocks.2.attn.lora_A_k.4.weight 49152
+backbone.blocks.2.attn.lora_A_k.5.weight 49152
+backbone.blocks.2.attn.lora_A_k.6.weight 49152
+backbone.blocks.2.attn.lora_A_k.7.weight 49152
+backbone.blocks.2.attn.lora_A_k.8.weight 49152
+backbone.blocks.2.attn.lora_A_k.9.weight 49152
+backbone.blocks.2.attn.lora_B_k.0.weight 49152
+backbone.blocks.2.attn.lora_B_k.1.weight 49152
+backbone.blocks.2.attn.lora_B_k.2.weight 49152
+backbone.blocks.2.attn.lora_B_k.3.weight 49152
+backbone.blocks.2.attn.lora_B_k.4.weight 49152
+backbone.blocks.2.attn.lora_B_k.5.weight 49152
+backbone.blocks.2.attn.lora_B_k.6.weight 49152
+backbone.blocks.2.attn.lora_B_k.7.weight 49152
+backbone.blocks.2.attn.lora_B_k.8.weight 49152
+backbone.blocks.2.attn.lora_B_k.9.weight 49152
+backbone.blocks.2.attn.lora_A_v.0.weight 49152
+backbone.blocks.2.attn.lora_A_v.1.weight 49152
+backbone.blocks.2.attn.lora_A_v.2.weight 49152
+backbone.blocks.2.attn.lora_A_v.3.weight 49152
+backbone.blocks.2.attn.lora_A_v.4.weight 49152
+backbone.blocks.2.attn.lora_A_v.5.weight 49152
+backbone.blocks.2.attn.lora_A_v.6.weight 49152
+backbone.blocks.2.attn.lora_A_v.7.weight 49152
+backbone.blocks.2.attn.lora_A_v.8.weight 49152
+backbone.blocks.2.attn.lora_A_v.9.weight 49152
+backbone.blocks.2.attn.lora_B_v.0.weight 49152
+backbone.blocks.2.attn.lora_B_v.1.weight 49152
+backbone.blocks.2.attn.lora_B_v.2.weight 49152
+backbone.blocks.2.attn.lora_B_v.3.weight 49152
+backbone.blocks.2.attn.lora_B_v.4.weight 49152
+backbone.blocks.2.attn.lora_B_v.5.weight 49152
+backbone.blocks.2.attn.lora_B_v.6.weight 49152
+backbone.blocks.2.attn.lora_B_v.7.weight 49152
+backbone.blocks.2.attn.lora_B_v.8.weight 49152
+backbone.blocks.2.attn.lora_B_v.9.weight 49152
+backbone.blocks.2.attn.coef_k.0 3000
+backbone.blocks.2.attn.coef_k.1 3000
+backbone.blocks.2.attn.coef_k.2 3000
+backbone.blocks.2.attn.coef_k.3 3000
+backbone.blocks.2.attn.coef_k.4 3000
+backbone.blocks.2.attn.coef_k.5 3000
+backbone.blocks.2.attn.coef_k.6 3000
+backbone.blocks.2.attn.coef_k.7 3000
+backbone.blocks.2.attn.coef_k.8 3000
+backbone.blocks.2.attn.coef_k.9 3000
+backbone.blocks.2.attn.coef_v.0 3000
+backbone.blocks.2.attn.coef_v.1 3000
+backbone.blocks.2.attn.coef_v.2 3000
+backbone.blocks.2.attn.coef_v.3 3000
+backbone.blocks.2.attn.coef_v.4 3000
+backbone.blocks.2.attn.coef_v.5 3000
+backbone.blocks.2.attn.coef_v.6 3000
+backbone.blocks.2.attn.coef_v.7 3000
+backbone.blocks.2.attn.coef_v.8 3000
+backbone.blocks.2.attn.coef_v.9 3000
+backbone.blocks.3.attn.lora_A_k.0.weight 49152
+backbone.blocks.3.attn.lora_A_k.1.weight 49152
+backbone.blocks.3.attn.lora_A_k.2.weight 49152
+backbone.blocks.3.attn.lora_A_k.3.weight 49152
+backbone.blocks.3.attn.lora_A_k.4.weight 49152
+backbone.blocks.3.attn.lora_A_k.5.weight 49152
+backbone.blocks.3.attn.lora_A_k.6.weight 49152
+backbone.blocks.3.attn.lora_A_k.7.weight 49152
+backbone.blocks.3.attn.lora_A_k.8.weight 49152
+backbone.blocks.3.attn.lora_A_k.9.weight 49152
+backbone.blocks.3.attn.lora_B_k.0.weight 49152
+backbone.blocks.3.attn.lora_B_k.1.weight 49152
+backbone.blocks.3.attn.lora_B_k.2.weight 49152
+backbone.blocks.3.attn.lora_B_k.3.weight 49152
+backbone.blocks.3.attn.lora_B_k.4.weight 49152
+backbone.blocks.3.attn.lora_B_k.5.weight 49152
+backbone.blocks.3.attn.lora_B_k.6.weight 49152
+backbone.blocks.3.attn.lora_B_k.7.weight 49152
+backbone.blocks.3.attn.lora_B_k.8.weight 49152
+backbone.blocks.3.attn.lora_B_k.9.weight 49152
+backbone.blocks.3.attn.lora_A_v.0.weight 49152
+backbone.blocks.3.attn.lora_A_v.1.weight 49152
+backbone.blocks.3.attn.lora_A_v.2.weight 49152
+backbone.blocks.3.attn.lora_A_v.3.weight 49152
+backbone.blocks.3.attn.lora_A_v.4.weight 49152
+backbone.blocks.3.attn.lora_A_v.5.weight 49152
+backbone.blocks.3.attn.lora_A_v.6.weight 49152
+backbone.blocks.3.attn.lora_A_v.7.weight 49152
+backbone.blocks.3.attn.lora_A_v.8.weight 49152
+backbone.blocks.3.attn.lora_A_v.9.weight 49152
+backbone.blocks.3.attn.lora_B_v.0.weight 49152
+backbone.blocks.3.attn.lora_B_v.1.weight 49152
+backbone.blocks.3.attn.lora_B_v.2.weight 49152
+backbone.blocks.3.attn.lora_B_v.3.weight 49152
+backbone.blocks.3.attn.lora_B_v.4.weight 49152
+backbone.blocks.3.attn.lora_B_v.5.weight 49152
+backbone.blocks.3.attn.lora_B_v.6.weight 49152
+backbone.blocks.3.attn.lora_B_v.7.weight 49152
+backbone.blocks.3.attn.lora_B_v.8.weight 49152
+backbone.blocks.3.attn.lora_B_v.9.weight 49152
+backbone.blocks.3.attn.coef_k.0 3000
+backbone.blocks.3.attn.coef_k.1 3000
+backbone.blocks.3.attn.coef_k.2 3000
+backbone.blocks.3.attn.coef_k.3 3000
+backbone.blocks.3.attn.coef_k.4 3000
+backbone.blocks.3.attn.coef_k.5 3000
+backbone.blocks.3.attn.coef_k.6 3000
+backbone.blocks.3.attn.coef_k.7 3000
+backbone.blocks.3.attn.coef_k.8 3000
+backbone.blocks.3.attn.coef_k.9 3000
+backbone.blocks.3.attn.coef_v.0 3000
+backbone.blocks.3.attn.coef_v.1 3000
+backbone.blocks.3.attn.coef_v.2 3000
+backbone.blocks.3.attn.coef_v.3 3000
+backbone.blocks.3.attn.coef_v.4 3000
+backbone.blocks.3.attn.coef_v.5 3000
+backbone.blocks.3.attn.coef_v.6 3000
+backbone.blocks.3.attn.coef_v.7 3000
+backbone.blocks.3.attn.coef_v.8 3000
+backbone.blocks.3.attn.coef_v.9 3000
+backbone.blocks.4.attn.lora_A_k.0.weight 49152
+backbone.blocks.4.attn.lora_A_k.1.weight 49152
+backbone.blocks.4.attn.lora_A_k.2.weight 49152
+backbone.blocks.4.attn.lora_A_k.3.weight 49152
+backbone.blocks.4.attn.lora_A_k.4.weight 49152
+backbone.blocks.4.attn.lora_A_k.5.weight 49152
+backbone.blocks.4.attn.lora_A_k.6.weight 49152
+backbone.blocks.4.attn.lora_A_k.7.weight 49152
+backbone.blocks.4.attn.lora_A_k.8.weight 49152
+backbone.blocks.4.attn.lora_A_k.9.weight 49152
+backbone.blocks.4.attn.lora_B_k.0.weight 49152
+backbone.blocks.4.attn.lora_B_k.1.weight 49152
+backbone.blocks.4.attn.lora_B_k.2.weight 49152
+backbone.blocks.4.attn.lora_B_k.3.weight 49152
+backbone.blocks.4.attn.lora_B_k.4.weight 49152
+backbone.blocks.4.attn.lora_B_k.5.weight 49152
+backbone.blocks.4.attn.lora_B_k.6.weight 49152
+backbone.blocks.4.attn.lora_B_k.7.weight 49152
+backbone.blocks.4.attn.lora_B_k.8.weight 49152
+backbone.blocks.4.attn.lora_B_k.9.weight 49152
+backbone.blocks.4.attn.lora_A_v.0.weight 49152
+backbone.blocks.4.attn.lora_A_v.1.weight 49152
+backbone.blocks.4.attn.lora_A_v.2.weight 49152
+backbone.blocks.4.attn.lora_A_v.3.weight 49152
+backbone.blocks.4.attn.lora_A_v.4.weight 49152
+backbone.blocks.4.attn.lora_A_v.5.weight 49152
+backbone.blocks.4.attn.lora_A_v.6.weight 49152
+backbone.blocks.4.attn.lora_A_v.7.weight 49152
+backbone.blocks.4.attn.lora_A_v.8.weight 49152
+backbone.blocks.4.attn.lora_A_v.9.weight 49152
+backbone.blocks.4.attn.lora_B_v.0.weight 49152
+backbone.blocks.4.attn.lora_B_v.1.weight 49152
+backbone.blocks.4.attn.lora_B_v.2.weight 49152
+backbone.blocks.4.attn.lora_B_v.3.weight 49152
+backbone.blocks.4.attn.lora_B_v.4.weight 49152
+backbone.blocks.4.attn.lora_B_v.5.weight 49152
+backbone.blocks.4.attn.lora_B_v.6.weight 49152
+backbone.blocks.4.attn.lora_B_v.7.weight 49152
+backbone.blocks.4.attn.lora_B_v.8.weight 49152
+backbone.blocks.4.attn.lora_B_v.9.weight 49152
+backbone.blocks.4.attn.coef_k.0 3000
+backbone.blocks.4.attn.coef_k.1 3000
+backbone.blocks.4.attn.coef_k.2 3000
+backbone.blocks.4.attn.coef_k.3 3000
+backbone.blocks.4.attn.coef_k.4 3000
+backbone.blocks.4.attn.coef_k.5 3000
+backbone.blocks.4.attn.coef_k.6 3000
+backbone.blocks.4.attn.coef_k.7 3000
+backbone.blocks.4.attn.coef_k.8 3000
+backbone.blocks.4.attn.coef_k.9 3000
+backbone.blocks.4.attn.coef_v.0 3000
+backbone.blocks.4.attn.coef_v.1 3000
+backbone.blocks.4.attn.coef_v.2 3000
+backbone.blocks.4.attn.coef_v.3 3000
+backbone.blocks.4.attn.coef_v.4 3000
+backbone.blocks.4.attn.coef_v.5 3000
+backbone.blocks.4.attn.coef_v.6 3000
+backbone.blocks.4.attn.coef_v.7 3000
+backbone.blocks.4.attn.coef_v.8 3000
+backbone.blocks.4.attn.coef_v.9 3000
+backbone.blocks.5.attn.lora_A_k.0.weight 49152
+backbone.blocks.5.attn.lora_A_k.1.weight 49152
+backbone.blocks.5.attn.lora_A_k.2.weight 49152
+backbone.blocks.5.attn.lora_A_k.3.weight 49152
+backbone.blocks.5.attn.lora_A_k.4.weight 49152
+backbone.blocks.5.attn.lora_A_k.5.weight 49152
+backbone.blocks.5.attn.lora_A_k.6.weight 49152
+backbone.blocks.5.attn.lora_A_k.7.weight 49152
+backbone.blocks.5.attn.lora_A_k.8.weight 49152
+backbone.blocks.5.attn.lora_A_k.9.weight 49152
+backbone.blocks.5.attn.lora_B_k.0.weight 49152
+backbone.blocks.5.attn.lora_B_k.1.weight 49152
+backbone.blocks.5.attn.lora_B_k.2.weight 49152
+backbone.blocks.5.attn.lora_B_k.3.weight 49152
+backbone.blocks.5.attn.lora_B_k.4.weight 49152
+backbone.blocks.5.attn.lora_B_k.5.weight 49152
+backbone.blocks.5.attn.lora_B_k.6.weight 49152
+backbone.blocks.5.attn.lora_B_k.7.weight 49152
+backbone.blocks.5.attn.lora_B_k.8.weight 49152
+backbone.blocks.5.attn.lora_B_k.9.weight 49152
+backbone.blocks.5.attn.lora_A_v.0.weight 49152
+backbone.blocks.5.attn.lora_A_v.1.weight 49152
+backbone.blocks.5.attn.lora_A_v.2.weight 49152
+backbone.blocks.5.attn.lora_A_v.3.weight 49152
+backbone.blocks.5.attn.lora_A_v.4.weight 49152
+backbone.blocks.5.attn.lora_A_v.5.weight 49152
+backbone.blocks.5.attn.lora_A_v.6.weight 49152
+backbone.blocks.5.attn.lora_A_v.7.weight 49152
+backbone.blocks.5.attn.lora_A_v.8.weight 49152
+backbone.blocks.5.attn.lora_A_v.9.weight 49152
+backbone.blocks.5.attn.lora_B_v.0.weight 49152
+backbone.blocks.5.attn.lora_B_v.1.weight 49152
+backbone.blocks.5.attn.lora_B_v.2.weight 49152
+backbone.blocks.5.attn.lora_B_v.3.weight 49152
+backbone.blocks.5.attn.lora_B_v.4.weight 49152
+backbone.blocks.5.attn.lora_B_v.5.weight 49152
+backbone.blocks.5.attn.lora_B_v.6.weight 49152
+backbone.blocks.5.attn.lora_B_v.7.weight 49152
+backbone.blocks.5.attn.lora_B_v.8.weight 49152
+backbone.blocks.5.attn.lora_B_v.9.weight 49152
+backbone.blocks.5.attn.coef_k.0 3000
+backbone.blocks.5.attn.coef_k.1 3000
+backbone.blocks.5.attn.coef_k.2 3000
+backbone.blocks.5.attn.coef_k.3 3000
+backbone.blocks.5.attn.coef_k.4 3000
+backbone.blocks.5.attn.coef_k.5 3000
+backbone.blocks.5.attn.coef_k.6 3000
+backbone.blocks.5.attn.coef_k.7 3000
+backbone.blocks.5.attn.coef_k.8 3000
+backbone.blocks.5.attn.coef_k.9 3000
+backbone.blocks.5.attn.coef_v.0 3000
+backbone.blocks.5.attn.coef_v.1 3000
+backbone.blocks.5.attn.coef_v.2 3000
+backbone.blocks.5.attn.coef_v.3 3000
+backbone.blocks.5.attn.coef_v.4 3000
+backbone.blocks.5.attn.coef_v.5 3000
+backbone.blocks.5.attn.coef_v.6 3000
+backbone.blocks.5.attn.coef_v.7 3000
+backbone.blocks.5.attn.coef_v.8 3000
+backbone.blocks.5.attn.coef_v.9 3000
+backbone.blocks.6.attn.lora_A_k.0.weight 49152
+backbone.blocks.6.attn.lora_A_k.1.weight 49152
+backbone.blocks.6.attn.lora_A_k.2.weight 49152
+backbone.blocks.6.attn.lora_A_k.3.weight 49152
+backbone.blocks.6.attn.lora_A_k.4.weight 49152
+backbone.blocks.6.attn.lora_A_k.5.weight 49152
+backbone.blocks.6.attn.lora_A_k.6.weight 49152
+backbone.blocks.6.attn.lora_A_k.7.weight 49152
+backbone.blocks.6.attn.lora_A_k.8.weight 49152
+backbone.blocks.6.attn.lora_A_k.9.weight 49152
+backbone.blocks.6.attn.lora_B_k.0.weight 49152
+backbone.blocks.6.attn.lora_B_k.1.weight 49152
+backbone.blocks.6.attn.lora_B_k.2.weight 49152
+backbone.blocks.6.attn.lora_B_k.3.weight 49152
+backbone.blocks.6.attn.lora_B_k.4.weight 49152
+backbone.blocks.6.attn.lora_B_k.5.weight 49152
+backbone.blocks.6.attn.lora_B_k.6.weight 49152
+backbone.blocks.6.attn.lora_B_k.7.weight 49152
+backbone.blocks.6.attn.lora_B_k.8.weight 49152
+backbone.blocks.6.attn.lora_B_k.9.weight 49152
+backbone.blocks.6.attn.lora_A_v.0.weight 49152
+backbone.blocks.6.attn.lora_A_v.1.weight 49152
+backbone.blocks.6.attn.lora_A_v.2.weight 49152
+backbone.blocks.6.attn.lora_A_v.3.weight 49152
+backbone.blocks.6.attn.lora_A_v.4.weight 49152
+backbone.blocks.6.attn.lora_A_v.5.weight 49152
+backbone.blocks.6.attn.lora_A_v.6.weight 49152
+backbone.blocks.6.attn.lora_A_v.7.weight 49152
+backbone.blocks.6.attn.lora_A_v.8.weight 49152
+backbone.blocks.6.attn.lora_A_v.9.weight 49152
+backbone.blocks.6.attn.lora_B_v.0.weight 49152
+backbone.blocks.6.attn.lora_B_v.1.weight 49152
+backbone.blocks.6.attn.lora_B_v.2.weight 49152
+backbone.blocks.6.attn.lora_B_v.3.weight 49152
+backbone.blocks.6.attn.lora_B_v.4.weight 49152
+backbone.blocks.6.attn.lora_B_v.5.weight 49152
+backbone.blocks.6.attn.lora_B_v.6.weight 49152
+backbone.blocks.6.attn.lora_B_v.7.weight 49152
+backbone.blocks.6.attn.lora_B_v.8.weight 49152
+backbone.blocks.6.attn.lora_B_v.9.weight 49152
+backbone.blocks.6.attn.coef_k.0 3000
+backbone.blocks.6.attn.coef_k.1 3000
+backbone.blocks.6.attn.coef_k.2 3000
+backbone.blocks.6.attn.coef_k.3 3000
+backbone.blocks.6.attn.coef_k.4 3000
+backbone.blocks.6.attn.coef_k.5 3000
+backbone.blocks.6.attn.coef_k.6 3000
+backbone.blocks.6.attn.coef_k.7 3000
+backbone.blocks.6.attn.coef_k.8 3000
+backbone.blocks.6.attn.coef_k.9 3000
+backbone.blocks.6.attn.coef_v.0 3000
+backbone.blocks.6.attn.coef_v.1 3000
+backbone.blocks.6.attn.coef_v.2 3000
+backbone.blocks.6.attn.coef_v.3 3000
+backbone.blocks.6.attn.coef_v.4 3000
+backbone.blocks.6.attn.coef_v.5 3000
+backbone.blocks.6.attn.coef_v.6 3000
+backbone.blocks.6.attn.coef_v.7 3000
+backbone.blocks.6.attn.coef_v.8 3000
+backbone.blocks.6.attn.coef_v.9 3000
+backbone.blocks.7.attn.lora_A_k.0.weight 49152
+backbone.blocks.7.attn.lora_A_k.1.weight 49152
+backbone.blocks.7.attn.lora_A_k.2.weight 49152
+backbone.blocks.7.attn.lora_A_k.3.weight 49152
+backbone.blocks.7.attn.lora_A_k.4.weight 49152
+backbone.blocks.7.attn.lora_A_k.5.weight 49152
+backbone.blocks.7.attn.lora_A_k.6.weight 49152
+backbone.blocks.7.attn.lora_A_k.7.weight 49152
+backbone.blocks.7.attn.lora_A_k.8.weight 49152
+backbone.blocks.7.attn.lora_A_k.9.weight 49152
+backbone.blocks.7.attn.lora_B_k.0.weight 49152
+backbone.blocks.7.attn.lora_B_k.1.weight 49152
+backbone.blocks.7.attn.lora_B_k.2.weight 49152
+backbone.blocks.7.attn.lora_B_k.3.weight 49152
+backbone.blocks.7.attn.lora_B_k.4.weight 49152
+backbone.blocks.7.attn.lora_B_k.5.weight 49152
+backbone.blocks.7.attn.lora_B_k.6.weight 49152
+backbone.blocks.7.attn.lora_B_k.7.weight 49152
+backbone.blocks.7.attn.lora_B_k.8.weight 49152
+backbone.blocks.7.attn.lora_B_k.9.weight 49152
+backbone.blocks.7.attn.lora_A_v.0.weight 49152
+backbone.blocks.7.attn.lora_A_v.1.weight 49152
+backbone.blocks.7.attn.lora_A_v.2.weight 49152
+backbone.blocks.7.attn.lora_A_v.3.weight 49152
+backbone.blocks.7.attn.lora_A_v.4.weight 49152
+backbone.blocks.7.attn.lora_A_v.5.weight 49152
+backbone.blocks.7.attn.lora_A_v.6.weight 49152
+backbone.blocks.7.attn.lora_A_v.7.weight 49152
+backbone.blocks.7.attn.lora_A_v.8.weight 49152
+backbone.blocks.7.attn.lora_A_v.9.weight 49152
+backbone.blocks.7.attn.lora_B_v.0.weight 49152
+backbone.blocks.7.attn.lora_B_v.1.weight 49152
+backbone.blocks.7.attn.lora_B_v.2.weight 49152
+backbone.blocks.7.attn.lora_B_v.3.weight 49152
+backbone.blocks.7.attn.lora_B_v.4.weight 49152
+backbone.blocks.7.attn.lora_B_v.5.weight 49152
+backbone.blocks.7.attn.lora_B_v.6.weight 49152
+backbone.blocks.7.attn.lora_B_v.7.weight 49152
+backbone.blocks.7.attn.lora_B_v.8.weight 49152
+backbone.blocks.7.attn.lora_B_v.9.weight 49152
+backbone.blocks.7.attn.coef_k.0 3000
+backbone.blocks.7.attn.coef_k.1 3000
+backbone.blocks.7.attn.coef_k.2 3000
+backbone.blocks.7.attn.coef_k.3 3000
+backbone.blocks.7.attn.coef_k.4 3000
+backbone.blocks.7.attn.coef_k.5 3000
+backbone.blocks.7.attn.coef_k.6 3000
+backbone.blocks.7.attn.coef_k.7 3000
+backbone.blocks.7.attn.coef_k.8 3000
+backbone.blocks.7.attn.coef_k.9 3000
+backbone.blocks.7.attn.coef_v.0 3000
+backbone.blocks.7.attn.coef_v.1 3000
+backbone.blocks.7.attn.coef_v.2 3000
+backbone.blocks.7.attn.coef_v.3 3000
+backbone.blocks.7.attn.coef_v.4 3000
+backbone.blocks.7.attn.coef_v.5 3000
+backbone.blocks.7.attn.coef_v.6 3000
+backbone.blocks.7.attn.coef_v.7 3000
+backbone.blocks.7.attn.coef_v.8 3000
+backbone.blocks.7.attn.coef_v.9 3000
+backbone.blocks.8.attn.lora_A_k.0.weight 49152
+backbone.blocks.8.attn.lora_A_k.1.weight 49152
+backbone.blocks.8.attn.lora_A_k.2.weight 49152
+backbone.blocks.8.attn.lora_A_k.3.weight 49152
+backbone.blocks.8.attn.lora_A_k.4.weight 49152
+backbone.blocks.8.attn.lora_A_k.5.weight 49152
+backbone.blocks.8.attn.lora_A_k.6.weight 49152
+backbone.blocks.8.attn.lora_A_k.7.weight 49152
+backbone.blocks.8.attn.lora_A_k.8.weight 49152
+backbone.blocks.8.attn.lora_A_k.9.weight 49152
+backbone.blocks.8.attn.lora_B_k.0.weight 49152
+backbone.blocks.8.attn.lora_B_k.1.weight 49152
+backbone.blocks.8.attn.lora_B_k.2.weight 49152
+backbone.blocks.8.attn.lora_B_k.3.weight 49152
+backbone.blocks.8.attn.lora_B_k.4.weight 49152
+backbone.blocks.8.attn.lora_B_k.5.weight 49152
+backbone.blocks.8.attn.lora_B_k.6.weight 49152
+backbone.blocks.8.attn.lora_B_k.7.weight 49152
+backbone.blocks.8.attn.lora_B_k.8.weight 49152
+backbone.blocks.8.attn.lora_B_k.9.weight 49152
+backbone.blocks.8.attn.lora_A_v.0.weight 49152
+backbone.blocks.8.attn.lora_A_v.1.weight 49152
+backbone.blocks.8.attn.lora_A_v.2.weight 49152
+backbone.blocks.8.attn.lora_A_v.3.weight 49152
+backbone.blocks.8.attn.lora_A_v.4.weight 49152
+backbone.blocks.8.attn.lora_A_v.5.weight 49152
+backbone.blocks.8.attn.lora_A_v.6.weight 49152
+backbone.blocks.8.attn.lora_A_v.7.weight 49152
+backbone.blocks.8.attn.lora_A_v.8.weight 49152
+backbone.blocks.8.attn.lora_A_v.9.weight 49152
+backbone.blocks.8.attn.lora_B_v.0.weight 49152
+backbone.blocks.8.attn.lora_B_v.1.weight 49152
+backbone.blocks.8.attn.lora_B_v.2.weight 49152
+backbone.blocks.8.attn.lora_B_v.3.weight 49152
+backbone.blocks.8.attn.lora_B_v.4.weight 49152
+backbone.blocks.8.attn.lora_B_v.5.weight 49152
+backbone.blocks.8.attn.lora_B_v.6.weight 49152
+backbone.blocks.8.attn.lora_B_v.7.weight 49152
+backbone.blocks.8.attn.lora_B_v.8.weight 49152
+backbone.blocks.8.attn.lora_B_v.9.weight 49152
+backbone.blocks.8.attn.coef_k.0 3000
+backbone.blocks.8.attn.coef_k.1 3000
+backbone.blocks.8.attn.coef_k.2 3000
+backbone.blocks.8.attn.coef_k.3 3000
+backbone.blocks.8.attn.coef_k.4 3000
+backbone.blocks.8.attn.coef_k.5 3000
+backbone.blocks.8.attn.coef_k.6 3000
+backbone.blocks.8.attn.coef_k.7 3000
+backbone.blocks.8.attn.coef_k.8 3000
+backbone.blocks.8.attn.coef_k.9 3000
+backbone.blocks.8.attn.coef_v.0 3000
+backbone.blocks.8.attn.coef_v.1 3000
+backbone.blocks.8.attn.coef_v.2 3000
+backbone.blocks.8.attn.coef_v.3 3000
+backbone.blocks.8.attn.coef_v.4 3000
+backbone.blocks.8.attn.coef_v.5 3000
+backbone.blocks.8.attn.coef_v.6 3000
+backbone.blocks.8.attn.coef_v.7 3000
+backbone.blocks.8.attn.coef_v.8 3000
+backbone.blocks.8.attn.coef_v.9 3000
+backbone.blocks.9.attn.lora_A_k.0.weight 49152
+backbone.blocks.9.attn.lora_A_k.1.weight 49152
+backbone.blocks.9.attn.lora_A_k.2.weight 49152
+backbone.blocks.9.attn.lora_A_k.3.weight 49152
+backbone.blocks.9.attn.lora_A_k.4.weight 49152
+backbone.blocks.9.attn.lora_A_k.5.weight 49152
+backbone.blocks.9.attn.lora_A_k.6.weight 49152
+backbone.blocks.9.attn.lora_A_k.7.weight 49152
+backbone.blocks.9.attn.lora_A_k.8.weight 49152
+backbone.blocks.9.attn.lora_A_k.9.weight 49152
+backbone.blocks.9.attn.lora_B_k.0.weight 49152
+backbone.blocks.9.attn.lora_B_k.1.weight 49152
+backbone.blocks.9.attn.lora_B_k.2.weight 49152
+backbone.blocks.9.attn.lora_B_k.3.weight 49152
+backbone.blocks.9.attn.lora_B_k.4.weight 49152
+backbone.blocks.9.attn.lora_B_k.5.weight 49152
+backbone.blocks.9.attn.lora_B_k.6.weight 49152
+backbone.blocks.9.attn.lora_B_k.7.weight 49152
+backbone.blocks.9.attn.lora_B_k.8.weight 49152
+backbone.blocks.9.attn.lora_B_k.9.weight 49152
+backbone.blocks.9.attn.lora_A_v.0.weight 49152
+backbone.blocks.9.attn.lora_A_v.1.weight 49152
+backbone.blocks.9.attn.lora_A_v.2.weight 49152
+backbone.blocks.9.attn.lora_A_v.3.weight 49152
+backbone.blocks.9.attn.lora_A_v.4.weight 49152
+backbone.blocks.9.attn.lora_A_v.5.weight 49152
+backbone.blocks.9.attn.lora_A_v.6.weight 49152
+backbone.blocks.9.attn.lora_A_v.7.weight 49152
+backbone.blocks.9.attn.lora_A_v.8.weight 49152
+backbone.blocks.9.attn.lora_A_v.9.weight 49152
+backbone.blocks.9.attn.lora_B_v.0.weight 49152
+backbone.blocks.9.attn.lora_B_v.1.weight 49152
+backbone.blocks.9.attn.lora_B_v.2.weight 49152
+backbone.blocks.9.attn.lora_B_v.3.weight 49152
+backbone.blocks.9.attn.lora_B_v.4.weight 49152
+backbone.blocks.9.attn.lora_B_v.5.weight 49152
+backbone.blocks.9.attn.lora_B_v.6.weight 49152
+backbone.blocks.9.attn.lora_B_v.7.weight 49152
+backbone.blocks.9.attn.lora_B_v.8.weight 49152
+backbone.blocks.9.attn.lora_B_v.9.weight 49152
+backbone.blocks.9.attn.coef_k.0 3000
+backbone.blocks.9.attn.coef_k.1 3000
+backbone.blocks.9.attn.coef_k.2 3000
+backbone.blocks.9.attn.coef_k.3 3000
+backbone.blocks.9.attn.coef_k.4 3000
+backbone.blocks.9.attn.coef_k.5 3000
+backbone.blocks.9.attn.coef_k.6 3000
+backbone.blocks.9.attn.coef_k.7 3000
+backbone.blocks.9.attn.coef_k.8 3000
+backbone.blocks.9.attn.coef_k.9 3000
+backbone.blocks.9.attn.coef_v.0 3000
+backbone.blocks.9.attn.coef_v.1 3000
+backbone.blocks.9.attn.coef_v.2 3000
+backbone.blocks.9.attn.coef_v.3 3000
+backbone.blocks.9.attn.coef_v.4 3000
+backbone.blocks.9.attn.coef_v.5 3000
+backbone.blocks.9.attn.coef_v.6 3000
+backbone.blocks.9.attn.coef_v.7 3000
+backbone.blocks.9.attn.coef_v.8 3000
+backbone.blocks.9.attn.coef_v.9 3000
+backbone.blocks.10.attn.lora_A_k.0.weight 49152
+backbone.blocks.10.attn.lora_A_k.1.weight 49152
+backbone.blocks.10.attn.lora_A_k.2.weight 49152
+backbone.blocks.10.attn.lora_A_k.3.weight 49152
+backbone.blocks.10.attn.lora_A_k.4.weight 49152
+backbone.blocks.10.attn.lora_A_k.5.weight 49152
+backbone.blocks.10.attn.lora_A_k.6.weight 49152
+backbone.blocks.10.attn.lora_A_k.7.weight 49152
+backbone.blocks.10.attn.lora_A_k.8.weight 49152
+backbone.blocks.10.attn.lora_A_k.9.weight 49152
+backbone.blocks.10.attn.lora_B_k.0.weight 49152
+backbone.blocks.10.attn.lora_B_k.1.weight 49152
+backbone.blocks.10.attn.lora_B_k.2.weight 49152
+backbone.blocks.10.attn.lora_B_k.3.weight 49152
+backbone.blocks.10.attn.lora_B_k.4.weight 49152
+backbone.blocks.10.attn.lora_B_k.5.weight 49152
+backbone.blocks.10.attn.lora_B_k.6.weight 49152
+backbone.blocks.10.attn.lora_B_k.7.weight 49152
+backbone.blocks.10.attn.lora_B_k.8.weight 49152
+backbone.blocks.10.attn.lora_B_k.9.weight 49152
+backbone.blocks.10.attn.lora_A_v.0.weight 49152
+backbone.blocks.10.attn.lora_A_v.1.weight 49152
+backbone.blocks.10.attn.lora_A_v.2.weight 49152
+backbone.blocks.10.attn.lora_A_v.3.weight 49152
+backbone.blocks.10.attn.lora_A_v.4.weight 49152
+backbone.blocks.10.attn.lora_A_v.5.weight 49152
+backbone.blocks.10.attn.lora_A_v.6.weight 49152
+backbone.blocks.10.attn.lora_A_v.7.weight 49152
+backbone.blocks.10.attn.lora_A_v.8.weight 49152
+backbone.blocks.10.attn.lora_A_v.9.weight 49152
+backbone.blocks.10.attn.lora_B_v.0.weight 49152
+backbone.blocks.10.attn.lora_B_v.1.weight 49152
+backbone.blocks.10.attn.lora_B_v.2.weight 49152
+backbone.blocks.10.attn.lora_B_v.3.weight 49152
+backbone.blocks.10.attn.lora_B_v.4.weight 49152
+backbone.blocks.10.attn.lora_B_v.5.weight 49152
+backbone.blocks.10.attn.lora_B_v.6.weight 49152
+backbone.blocks.10.attn.lora_B_v.7.weight 49152
+backbone.blocks.10.attn.lora_B_v.8.weight 49152
+backbone.blocks.10.attn.lora_B_v.9.weight 49152
+backbone.blocks.10.attn.coef_k.0 3000
+backbone.blocks.10.attn.coef_k.1 3000
+backbone.blocks.10.attn.coef_k.2 3000
+backbone.blocks.10.attn.coef_k.3 3000
+backbone.blocks.10.attn.coef_k.4 3000
+backbone.blocks.10.attn.coef_k.5 3000
+backbone.blocks.10.attn.coef_k.6 3000
+backbone.blocks.10.attn.coef_k.7 3000
+backbone.blocks.10.attn.coef_k.8 3000
+backbone.blocks.10.attn.coef_k.9 3000
+backbone.blocks.10.attn.coef_v.0 3000
+backbone.blocks.10.attn.coef_v.1 3000
+backbone.blocks.10.attn.coef_v.2 3000
+backbone.blocks.10.attn.coef_v.3 3000
+backbone.blocks.10.attn.coef_v.4 3000
+backbone.blocks.10.attn.coef_v.5 3000
+backbone.blocks.10.attn.coef_v.6 3000
+backbone.blocks.10.attn.coef_v.7 3000
+backbone.blocks.10.attn.coef_v.8 3000
+backbone.blocks.10.attn.coef_v.9 3000
+backbone.blocks.11.attn.lora_A_k.0.weight 49152
+backbone.blocks.11.attn.lora_A_k.1.weight 49152
+backbone.blocks.11.attn.lora_A_k.2.weight 49152
+backbone.blocks.11.attn.lora_A_k.3.weight 49152
+backbone.blocks.11.attn.lora_A_k.4.weight 49152
+backbone.blocks.11.attn.lora_A_k.5.weight 49152
+backbone.blocks.11.attn.lora_A_k.6.weight 49152
+backbone.blocks.11.attn.lora_A_k.7.weight 49152
+backbone.blocks.11.attn.lora_A_k.8.weight 49152
+backbone.blocks.11.attn.lora_A_k.9.weight 49152
+backbone.blocks.11.attn.lora_B_k.0.weight 49152
+backbone.blocks.11.attn.lora_B_k.1.weight 49152
+backbone.blocks.11.attn.lora_B_k.2.weight 49152
+backbone.blocks.11.attn.lora_B_k.3.weight 49152
+backbone.blocks.11.attn.lora_B_k.4.weight 49152
+backbone.blocks.11.attn.lora_B_k.5.weight 49152
+backbone.blocks.11.attn.lora_B_k.6.weight 49152
+backbone.blocks.11.attn.lora_B_k.7.weight 49152
+backbone.blocks.11.attn.lora_B_k.8.weight 49152
+backbone.blocks.11.attn.lora_B_k.9.weight 49152
+backbone.blocks.11.attn.lora_A_v.0.weight 49152
+backbone.blocks.11.attn.lora_A_v.1.weight 49152
+backbone.blocks.11.attn.lora_A_v.2.weight 49152
+backbone.blocks.11.attn.lora_A_v.3.weight 49152
+backbone.blocks.11.attn.lora_A_v.4.weight 49152
+backbone.blocks.11.attn.lora_A_v.5.weight 49152
+backbone.blocks.11.attn.lora_A_v.6.weight 49152
+backbone.blocks.11.attn.lora_A_v.7.weight 49152
+backbone.blocks.11.attn.lora_A_v.8.weight 49152
+backbone.blocks.11.attn.lora_A_v.9.weight 49152
+backbone.blocks.11.attn.lora_B_v.0.weight 49152
+backbone.blocks.11.attn.lora_B_v.1.weight 49152
+backbone.blocks.11.attn.lora_B_v.2.weight 49152
+backbone.blocks.11.attn.lora_B_v.3.weight 49152
+backbone.blocks.11.attn.lora_B_v.4.weight 49152
+backbone.blocks.11.attn.lora_B_v.5.weight 49152
+backbone.blocks.11.attn.lora_B_v.6.weight 49152
+backbone.blocks.11.attn.lora_B_v.7.weight 49152
+backbone.blocks.11.attn.lora_B_v.8.weight 49152
+backbone.blocks.11.attn.lora_B_v.9.weight 49152
+backbone.blocks.11.attn.coef_k.0 3000
+backbone.blocks.11.attn.coef_k.1 3000
+backbone.blocks.11.attn.coef_k.2 3000
+backbone.blocks.11.attn.coef_k.3 3000
+backbone.blocks.11.attn.coef_k.4 3000
+backbone.blocks.11.attn.coef_k.5 3000
+backbone.blocks.11.attn.coef_k.6 3000
+backbone.blocks.11.attn.coef_k.7 3000
+backbone.blocks.11.attn.coef_k.8 3000
+backbone.blocks.11.attn.coef_k.9 3000
+backbone.blocks.11.attn.coef_v.0 3000
+backbone.blocks.11.attn.coef_v.1 3000
+backbone.blocks.11.attn.coef_v.2 3000
+backbone.blocks.11.attn.coef_v.3 3000
+backbone.blocks.11.attn.coef_v.4 3000
+backbone.blocks.11.attn.coef_v.5 3000
+backbone.blocks.11.attn.coef_v.6 3000
+backbone.blocks.11.attn.coef_v.7 3000
+backbone.blocks.11.attn.coef_v.8 3000
+backbone.blocks.11.attn.coef_v.9 3000
+fc.weight 7680
+fc.sigma 1
+
+Initial training for the first task.
+100%|██████████| 79/79 [01:17<00:00,  1.02it/s]
+Task 0, Epoch 1/2 => Loss 2.252, Train_accy 29.52, Test_accy 52.40
+100%|██████████| 79/79 [01:16<00:00,  1.04it/s]
+Task 0, Epoch 2/2 => Loss 2.128, Train_accy 44.88, Test_accy 54.90
+This is for the BaseNet initialization.
+After BaseNet initialization.
+Clear the backbone in MultiBranchCosineIncrementalNet, since we are using self.backbones with dual branches
+Constructed dual branch network.
+New network structure:
+MultiBranchCosineIncrementalNet_adapt_AC(
+  (backbone): Identity()
+  (backbones): ModuleList(
+    (0): VisionTransformerBiLoRA(
+      (patch_embed): PatchEmbed(
+        (proj): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16))
+        (norm): Identity()
+      )
+      (pos_drop): Dropout(p=0.0, inplace=False)
+      (blocks): Sequential(
+        (0): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (1): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (2): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (3): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (4): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (5): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (6): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (7): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (8): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (9): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (10): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+        (11): BlockBiLoRA(
+          (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (attn): Attention_FFT(
+            (qkv): Linear(in_features=768, out_features=2304, bias=True)
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (proj): Linear(in_features=768, out_features=768, bias=True)
+            (proj_drop): Dropout(p=0.0, inplace=False)
+            (lora_A_k): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_k): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (lora_A_v): ModuleList(
+              (0-9): 10 x Linear(in_features=768, out_features=64, bias=False)
+            )
+            (lora_B_v): ModuleList(
+              (0-9): 10 x Linear(in_features=64, out_features=768, bias=False)
+            )
+            (coef_k): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+            (coef_v): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (1): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (2): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (3): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (4): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (5): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (6): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (7): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (8): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+                (9): Parameter containing: [torch.float32 of size 3000 (cuda:0)]
+            )
+          )
+          (ls1): Identity()
+          (drop_path1): Identity()
+          (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU(approximate='none')
+            (drop1): Dropout(p=0.0, inplace=False)
+            (norm): Identity()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (ls2): Identity()
+          (drop_path2): Identity()
+        )
+      )
+      (norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (pre_logits): Identity()
+      (fc_norm): Identity()
+      (head): Identity()
+    )
+  )
+  (fc): CosineLinear2()
+)
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=10, bias=False)
+  )
+)
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.94it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 0 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.93it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 1 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.92it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 2 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.94it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 3 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.92it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 4 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.92it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 5 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.94it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 6 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.92it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 7 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.93it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 8 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.94it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 9 covariance matrix shape: (768, 768)
+Starting class alignment...
+Alignment: 100%|██████████| 79/79 [00:37<00:00,  2.10batch/s]
+Embedding shape:  torch.Size([5000, 5000])
+Label shape torch.Size([5000])
+One-hot label shape:  torch.Size([5000, 10])
+Optimising ridge parameter...
+selected lambda = 1000.0
+gamma 1000.0
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 0 Elapsed time:  275.74652791023254
+
+Average Accuracy (CNN): 79.1
+Learning on 10-20
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([10, 768])
+New weight (Cosine FC) torch.Size([20, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=20, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([10, 5000])
+New weight (AC model) torch.Size([20, 5000])
+118,825,505 total parameters.
+29,086,849 training parameters.
+Progressive training for task 1
+100%|██████████| 79/79 [01:18<00:00,  1.00it/s]
+Task 1, Epoch 1/2 => Loss 2.671, Train_accy 23.72, Test_accy 11.70
+100%|██████████| 79/79 [01:18<00:00,  1.00it/s]
+Task 1, Epoch 2/2 => Loss 2.534, Train_accy 25.58, Test_accy 12.40
+Task 1, Epoch 2/2 => Loss 2.534, Train_accy 25.58, Test_accy 12.40
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.84it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 10 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.84it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 11 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.84it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 12 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.84it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 13 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.83it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 14 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.84it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 15 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.84it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 16 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.84it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 17 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.84it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 18 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.83it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 19 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:15<00:00,  1.04batch/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [03:03<00:00,  5.46it/s]
+best_loss: 0.0418879252076149
+Computing class relations...
+Old means shape: (10, 768)
+New means shape: (10, 768)
+Class relations: [16 12 12 12 16 18 16 16 16 16]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.76it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.76it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.78it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.76it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.78it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 10000
+Feature dataset dimension: 768
+Label dataset size: 10000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:41<00:00,  1.92batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 20])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 157/157 [00:05<00:00, 28.44batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 1 Elapsed time:  602.9698832035065
+Average Accuracy (CNN): 56.599999999999994
+Learning on 20-30
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([20, 768])
+New weight (Cosine FC) torch.Size([30, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=30, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([20, 5000])
+New weight (AC model) torch.Size([30, 5000])
+118,883,185 total parameters.
+29,094,529 training parameters.
+Progressive training for task 2
+100%|██████████| 79/79 [01:21<00:00,  1.03s/it]
+Task 2, Epoch 1/2 => Loss 2.587, Train_accy 19.52, Test_accy 7.20
+100%|██████████| 79/79 [01:21<00:00,  1.03s/it]
+Task 2, Epoch 2/2 => Loss 2.439, Train_accy 19.48, Test_accy 6.97
+Task 2, Epoch 2/2 => Loss 2.439, Train_accy 19.48, Test_accy 6.97
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 20 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.76it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 21 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.75it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 22 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.75it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 23 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.76it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 24 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.76it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 25 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 26 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 27 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.76it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 28 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.75it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 29 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:19<00:00,  1.00s/batch]
+  0%|          | 1/1000 [00:00<03:07,  5.34it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [03:05<00:00,  5.39it/s]
+best_loss: 0.0366699512898922
+Computing class relations...
+Old means shape: (20, 768)
+New means shape: (10, 768)
+Class relations: [28 28 28 28 28 26 28 26 28 28 25 21 29 22 22 29 25 25 25 22]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.65it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.67it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.66it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.64it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.65it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.65it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.66it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.67it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.66it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.67it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 15000
+Feature dataset dimension: 768
+Label dataset size: 15000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:42<00:00,  1.84batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 30])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 235/235 [00:08<00:00, 28.09batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 2 Elapsed time:  648.9927554130554
+Average Accuracy (CNN): 44.199999999999996
+Learning on 30-40
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([30, 768])
+New weight (Cosine FC) torch.Size([40, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=40, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([30, 5000])
+New weight (AC model) torch.Size([40, 5000])
+118,940,865 total parameters.
+29,102,209 training parameters.
+Progressive training for task 3
+100%|██████████| 79/79 [01:24<00:00,  1.07s/it]
+Task 3, Epoch 1/2 => Loss 2.539, Train_accy 24.48, Test_accy 6.45
+100%|██████████| 79/79 [01:24<00:00,  1.07s/it]
+Task 3, Epoch 2/2 => Loss 2.403, Train_accy 24.64, Test_accy 6.58
+Task 3, Epoch 2/2 => Loss 2.403, Train_accy 24.64, Test_accy 6.58
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.68it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 30 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.69it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 31 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.69it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 32 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.69it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 33 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.68it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 34 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.68it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 35 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.68it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 36 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.70it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 37 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.71it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 38 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.68it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 39 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:22<00:00,  1.04s/batch]
+  0%|          | 1/1000 [00:00<03:13,  5.16it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [03:02<00:00,  5.48it/s]
+best_loss: 0.03417654412984848
+Computing class relations...
+Old means shape: (30, 768)
+New means shape: (10, 768)
+Class relations: [33 33 33 31 33 31 33 33 33 33 32 32 35 35 35 35 35 32 35 35 33 35 35 35
+ 35 32 35 32 33 33]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.58it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.58it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.56it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.56it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 20000
+Feature dataset dimension: 768
+Label dataset size: 20000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:44<00:00,  1.79batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 40])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 313/313 [00:11<00:00, 27.92batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 3 Elapsed time:  692.6209313869476
+Average Accuracy (CNN): 37.055
+Learning on 40-50
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([40, 768])
+New weight (Cosine FC) torch.Size([50, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=50, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([40, 5000])
+New weight (AC model) torch.Size([50, 5000])
+118,998,545 total parameters.
+29,109,889 training parameters.
+Progressive training for task 4
+
+100%|██████████| 79/79 [01:25<00:00,  1.08s/it]
+Task 4, Epoch 1/2 => Loss 2.431, Train_accy 32.60, Test_accy 6.70
+100%|██████████| 79/79 [01:25<00:00,  1.09s/it]
+Task 4, Epoch 2/2 => Loss 2.267, Train_accy 33.24, Test_accy 6.66
+Task 4, Epoch 2/2 => Loss 2.267, Train_accy 33.24, Test_accy 6.66
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.62it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 40 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.62it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 41 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.63it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 42 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.62it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 43 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.62it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 44 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.62it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 45 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.60it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 46 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.62it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 47 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.60it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 48 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:04<00:00,  1.61it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 49 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:26<00:00,  1.10s/batch]
+  0%|          | 1/1000 [00:00<02:59,  5.56it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [03:03<00:00,  5.44it/s]
+best_loss: 0.032566284656524655
+Computing class relations...
+Old means shape: (40, 768)
+New means shape: (10, 768)
+Class relations: [44 44 44 40 44 47 44 47 44 44 41 41 41 41 41 41 41 41 41 41 41 41 41 41
+ 41 41 41 41 40 41 48 40 48 42 42 46 48 40 48 48]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.50it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.50it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.50it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.51it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.50it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.51it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.51it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.51it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.50it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.50it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 25000
+Feature dataset dimension: 768
+Label dataset size: 25000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:46<00:00,  1.70batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 50])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 391/391 [00:13<00:00, 27.94batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 4 Elapsed time:  740.3878309726715
+Average Accuracy (CNN): 32.251999999999995
+Learning on 50-60
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([50, 768])
+New weight (Cosine FC) torch.Size([60, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=60, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([50, 5000])
+New weight (AC model) torch.Size([60, 5000])
+119,056,225 total parameters.
+29,117,569 training parameters.
+Progressive training for task 5
+100%|██████████| 79/79 [01:28<00:00,  1.12s/it]
+Task 5, Epoch 1/2 => Loss 2.424, Train_accy 21.52, Test_accy 3.85
+100%|██████████| 79/79 [01:28<00:00,  1.12s/it]
+Task 5, Epoch 2/2 => Loss 2.314, Train_accy 21.28, Test_accy 3.88
+Task 5, Epoch 2/2 => Loss 2.314, Train_accy 21.28, Test_accy 3.88
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.51it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 50 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.52it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 51 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.56it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 52 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.56it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 53 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.55it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 54 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.55it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 55 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.54it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 56 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.56it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 57 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.56it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 58 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.55it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 59 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:30<00:00,  1.14s/batch]
+  0%|          | 1/1000 [00:00<03:02,  5.47it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [03:02<00:00,  5.48it/s]
+best_loss: 0.028592206224799157
+Computing class relations...
+Old means shape: (50, 768)
+New means shape: (10, 768)
+Class relations: [51 51 51 50 51 50 51 50 51 51 51 51 51 51 51 51 51 51 51 51 52 51 52 51
+ 51 52 52 52 51 52 51 51 51 51 54 52 54 51 51 54 51 54 54 50 51 54 50 50
+ 54 52]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.58it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.56it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 30000
+Feature dataset dimension: 768
+Label dataset size: 30000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57 58 59]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:48<00:00,  1.63batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 60])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 469/469 [00:17<00:00, 27.43batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 5 Elapsed time:  787.745032787323
+Average Accuracy (CNN): 28.593333333333334
+Learning on 60-70
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([60, 768])
+New weight (Cosine FC) torch.Size([70, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=70, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([60, 5000])
+New weight (AC model) torch.Size([70, 5000])
+119,113,905 total parameters.
+29,125,249 training parameters.
+Progressive training for task 6
+100%|██████████| 79/79 [01:31<00:00,  1.16s/it]
+Task 6, Epoch 1/2 => Loss 2.405, Train_accy 27.32, Test_accy 3.76
+100%|██████████| 79/79 [01:31<00:00,  1.15s/it]
+Task 6, Epoch 2/2 => Loss 2.301, Train_accy 27.46, Test_accy 3.73
+Task 6, Epoch 2/2 => Loss 2.301, Train_accy 27.46, Test_accy 3.73
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.48it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 60 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.52it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 61 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.52it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 62 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.52it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 63 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.51it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 64 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.52it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 65 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.52it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 66 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.51it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 67 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.51it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 68 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.52it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 69 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:32<00:00,  1.18s/batch]
+  0%|          | 1/1000 [00:00<03:12,  5.19it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [03:01<00:00,  5.51it/s]
+best_loss: 0.02160630729794502
+Computing class relations...
+Old means shape: (60, 768)
+New means shape: (10, 768)
+Class relations: [65 62 65 62 62 69 65 62 62 62 63 63 63 63 63 63 63 63 63 63 61 63 63 63
+ 63 63 63 61 61 63 66 66 66 66 66 68 66 66 66 66 66 61 61 61 66 61 69 62
+ 61 69 66 66 66 62 66 66 66 62 66 66]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.42it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.38it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.40it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.39it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.39it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.39it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.37it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.36it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.39it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.40it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 35000
+Feature dataset dimension: 768
+Label dataset size: 35000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:49<00:00,  1.59batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 70])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 547/547 [00:19<00:00, 27.51batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 6 Elapsed time:  840.434335231781
+
+Average Accuracy (CNN): 25.574285714285715
+Learning on 70-80
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([70, 768])
+New weight (Cosine FC) torch.Size([80, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=80, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([70, 5000])
+New weight (AC model) torch.Size([80, 5000])
+119,171,585 total parameters.
+29,132,929 training parameters.
+Progressive training for task 7
+100%|██████████| 79/79 [01:32<00:00,  1.17s/it]
+Task 7, Epoch 1/2 => Loss 2.449, Train_accy 25.14, Test_accy 3.69
+100%|██████████| 79/79 [01:32<00:00,  1.17s/it]
+Task 7, Epoch 2/2 => Loss 2.325, Train_accy 25.34, Test_accy 3.60
+Task 7, Epoch 2/2 => Loss 2.325, Train_accy 25.34, Test_accy 3.60
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 70 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.48it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 71 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.48it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 72 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.48it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 73 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.48it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 74 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.48it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 75 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.46it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 76 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.47it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 77 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.48it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 78 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.47it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 79 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:35<00:00,  1.21s/batch]
+  0%|          | 1/1000 [00:00<02:57,  5.63it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [02:59<00:00,  5.56it/s]
+best_loss: 0.01983378630876541
+Computing class relations...
+Old means shape: (70, 768)
+New means shape: (10, 768)
+Class relations: [79 71 79 71 79 71 79 71 71 71 71 71 71 71 71 71 71 71 71 71 71 71 71 71
+ 71 71 71 71 71 71 75 75 75 75 75 71 75 75 75 75 75 71 71 71 71 75 71 71
+ 71 71 79 77 75 77 77 77 77 77 77 77 71 79 79 79 79 79 79 79 79 71]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.33it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.33it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.32it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.33it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.32it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.32it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.33it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.32it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.32it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.33it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 40000
+Feature dataset dimension: 768
+Label dataset size: 40000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71
+ 72 73 74 75 76 77 78 79]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:51<00:00,  1.54batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 80])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 625/625 [00:22<00:00, 27.52batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 7 Elapsed time:  887.989688873291
+Average Accuracy (CNN): 23.266250000000003
+Learning on 80-90
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([80, 768])
+New weight (Cosine FC) torch.Size([90, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=90, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([80, 5000])
+New weight (AC model) torch.Size([90, 5000])
+119,229,265 total parameters.
+29,140,609 training parameters.
+Progressive training for task 8
+100%|██████████| 79/79 [01:35<00:00,  1.21s/it]
+Task 8, Epoch 1/2 => Loss 2.478, Train_accy 17.42, Test_accy 2.09
+100%|██████████| 79/79 [01:35<00:00,  1.21s/it]
+Task 8, Epoch 2/2 => Loss 2.348, Train_accy 16.54, Test_accy 2.08
+Task 8, Epoch 2/2 => Loss 2.348, Train_accy 16.54, Test_accy 2.08
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.40it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 80 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.41it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 81 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.42it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 82 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.42it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 83 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.42it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 84 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.41it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 85 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.42it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 86 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.41it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 87 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 88 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.42it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 89 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:40<00:00,  1.27s/batch]
+  0%|          | 1/1000 [00:00<03:12,  5.19it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [03:00<00:00,  5.54it/s]
+best_loss: 0.02081896571815014
+Computing class relations...
+Old means shape: (80, 768)
+New means shape: (10, 768)
+Class relations: [87 87 87 87 87 86 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87
+ 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87 87
+ 87 87 86 87 87 87 86 86 86 86 86 87 81 86 86 86 86 86 86 86 86 86 81 86
+ 81 81 81 81 86 88 81 81]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.42it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.42it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.43it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 45000
+Feature dataset dimension: 768
+Label dataset size: 45000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71
+ 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:53<00:00,  1.48batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 90])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 704/704 [00:25<00:00, 27.40batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 8 Elapsed time:  936.120539188385
+Average Accuracy (CNN): 21.424444444444447
+Learning on 90-100
+Train dataset size: 5000
+Use Cosine model as classifier head.
+Cosine model architecture: CosineLinear2()
+Old weight (Cosine FC) torch.Size([90, 768])
+New weight (Cosine FC) torch.Size([100, 768])
+Use AC model as classifier head.
+AC model architecture: AC_Linear(
+  (fc): Sequential(
+    (0): Linear(in_features=768, out_features=5000, bias=False)
+    (1): ReLU()
+    (2): Linear(in_features=5000, out_features=100, bias=False)
+  )
+)
+Hidden weight (AC model) torch.Size([5000, 768])
+Old weight (AC model) torch.Size([90, 5000])
+New weight (AC model) torch.Size([100, 5000])
+119,286,945 total parameters.
+29,148,289 training parameters.
+Progressive training for task 9
+100%|██████████| 79/79 [01:37<00:00,  1.23s/it]
+Task 9, Epoch 1/2 => Loss 2.259, Train_accy 36.30, Test_accy 3.75
+100%|██████████| 79/79 [01:37<00:00,  1.23s/it]
+Task 9, Epoch 2/2 => Loss 2.081, Train_accy 37.16, Test_accy 3.73
+Task 9, Epoch 2/2 => Loss 2.081, Train_accy 37.16, Test_accy 3.73
+Computing class means and covariance matrices...
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.33it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 90 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.37it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 91 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.37it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 92 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.37it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 93 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.37it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 94 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.36it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 95 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.37it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 96 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.35it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 97 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.36it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 98 covariance matrix shape: (768, 768)
+Extracting prototypes...
+100%|██████████| 8/8 [00:05<00:00,  1.36it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Class 99 covariance matrix shape: (768, 768)
+Calibrating prototype model (Prototype correction - Knowledge Rumination)...
+cali_prototye_model: 100%|██████████| 79/79 [01:44<00:00,  1.32s/batch]
+  0%|          | 1/1000 [00:00<03:01,  5.51it/s]
+开始 修正 prototype
+100%|██████████| 1000/1000 [03:02<00:00,  5.49it/s]
+best_loss: 0.02121361558139324
+Computing class relations...
+Old means shape: (90, 768)
+New means shape: (10, 768)
+Class relations: [91 91 91 91 91 95 91 91 91 91 91 91 91 91 91 91 91 91 91 91 91 94 91 94
+ 94 91 91 91 91 91 91 91 91 91 91 94 91 91 91 91 91 91 91 91 91 91 94 91
+ 91 94 91 91 94 91 91 91 91 91 91 94 94 94 94 94 94 94 94 94 94 94 99 94
+ 99 94 99 99 99 99 94 99 92 99 99 99 92 99 94 99 92 92]
+Building feature dataset...
+Extract prototypes for known classes...
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.25it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.20it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.16it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.20it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.20it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.22it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.20it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.22it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.22it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Extracting prototypes...
+100%|██████████| 8/8 [00:06<00:00,  1.21it/s]
+Extracted vectors shape: (500, 768) float32
+Extracted targets shape: (500,) int64
+Generating pseudo-features for old classes from relations...
+Total feature dataset size: 50000
+Feature dataset dimension: 768
+Label dataset size: 50000
+Label dataset classes: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71
+ 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95
+ 96 97 98 99]
+Incremental class alignment (Knowledge Memorization)...
+Alignment: 100%|██████████| 79/79 [00:55<00:00,  1.43batch/s]
+Knowledge Memorization completed.
+Updated weight matrix W shape: torch.Size([5000, 100])
+Updated correlation matrix R shape: torch.Size([5000, 5000])
+numpy inverse
+Calibrating classifier weights (Knowledge Rumination - Selective reinforcement of old task knowledge)...
+Alignment: 100%|██████████| 782/782 [00:28<00:00, 27.32batch/s]
+numpy inverse
+Finish one task 
+[TIME TIME TIME] Task= 9 Elapsed time:  1007.7432222366333
+Average Accuracy (CNN): 19.96
