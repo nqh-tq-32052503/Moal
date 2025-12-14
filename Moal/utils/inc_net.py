@@ -109,15 +109,17 @@ class BaseNet(nn.Module):
     def feature_dim(self):
         return self.backbone.out_dim
 
-    def extract_vector(self, x):
+    def extract_vector(self, x, task=None):
         if self.model_type == 'cnn':
             self.backbone(x)['features']
+        elif self.model_type == 'bilora':
+            return self.backbone(x, task)
         else:
             return self.backbone(x)
 
 
 
-    def forward(self, x):
+    def forward(self, x, task=None):
         if self.model_type == 'cnn':
             x = self.backbone(x)
             out = self.fc(x['features'])
@@ -129,6 +131,10 @@ class BaseNet(nn.Module):
             }
             """
             out.update(x)
+        elif self.model_type == 'bilora':
+            x = self.backbone(x, task)
+            out = self.fc(x)
+            out.update({"features": x})
         else:
             x = self.backbone(x)
             out = self.fc(x)

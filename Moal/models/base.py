@@ -118,12 +118,12 @@ class BaseLearner(object):
 
         return ret
 
-    def eval_task(self):
-        y_pred, y_true = self._eval_cnn(self.test_loader)
+    def eval_task(self, task=None):
+        y_pred, y_true = self._eval_cnn(self.test_loader, task=task)
         cnn_accy = self._evaluate(y_pred, y_true)
 
         if hasattr(self, "_class_means"):
-            y_pred, y_true = self._eval_nme(self.test_loader, self._class_means)
+            y_pred, y_true = self._eval_nme(self.test_loader, self._class_means, task=task)
             nme_accy = self._evaluate(y_pred, y_true)
         else:
             nme_accy = None
@@ -175,13 +175,16 @@ class BaseLearner(object):
         return np.around(tensor2numpy(correct) * 100 / total, decimals=2)
 
 
-    def _eval_cnn(self, loader):
+    def _eval_cnn(self, loader, task=None):
         self._network.eval()
         y_pred, y_true = [], []
         for _, (_, inputs, targets) in enumerate(loader):
             inputs = inputs.to(self._device)
             with torch.no_grad():
-                outputs = self._network(inputs)["logits"]
+                if self.model_type == 'bilora':
+                    outputs = self._network(inputs, task=task)["logits"]
+                else:
+                    outputs = self._network(inputs)["logits"]
             predicts = torch.topk(
                 outputs, k=self.topk, dim=1, largest=True, sorted=True
             )[
@@ -192,9 +195,9 @@ class BaseLearner(object):
 
         return np.concatenate(y_pred), np.concatenate(y_true)  # [N, topk]
 
-    def _eval_nme(self, loader, class_means):
+    def _eval_nme(self, loader, class_means, task=None):
         self._network.eval()
-        vectors, y_true = self._extract_vectors(loader)
+        vectors, y_true = self._extract_vectors(loader, task=task)
         vectors = (vectors.T / (np.linalg.norm(vectors.T, axis=0) + EPSILON)).T
 
         dists = cdist(class_means, vectors, "sqeuclidean")  # [nb_classes, N]
@@ -202,7 +205,7 @@ class BaseLearner(object):
 
         return np.argsort(scores, axis=1)[:, : self.topk], y_true  # [N, topk]
 
-    def _extract_vectors(self, loader):
+    def _extract_vectors(self, loader, task=None):
         self._network.eval()
         vectors, targets = [], []
 
@@ -214,9 +217,11 @@ class BaseLearner(object):
                         self._network.module.extract_vector(_inputs.to(self._device))
                     )
                 else:
-                    _vectors = tensor2numpy(
-                        self._network.extract_vector(_inputs.to(self._device))
-                    )
+                    if self.model_type == "bilora":
+                        extracted_vectors = self._network.extract_vector(_inputs.to(self._device), task=task)
+                    else:
+                        extracted_vectors = self._network.extract_vector(_inputs.to(self._device))
+                    _vectors = tensor2numpy(extracted_vectors)
 
                 vectors.append(_vectors)
                 targets.append(_targets)
