@@ -99,6 +99,8 @@ class BaseNet(nn.Module):
 
         if 'resnet' in args['backbone_type']:
             self.model_type = 'cnn'
+        elif 'bilora' in args['backbone_type']:
+            self.model_type = 'bilora'
         else:
             self.model_type = 'vit'
 
@@ -112,7 +114,7 @@ class BaseNet(nn.Module):
         else:
             return self.backbone(x)
 
-    def forward(self, x):
+    def forward(self, x, task=None):
         if self.model_type == 'cnn':
             x = self.backbone(x)
             out = self.fc(x['features'])
@@ -124,6 +126,10 @@ class BaseNet(nn.Module):
             }
             """
             out.update(x)
+        elif self.model_type == 'bilora':
+            x = self.backbone(x, task=task)
+            out = self.fc(x)
+            out.update({"features": x})
         else:
             x = self.backbone(x)
             out = self.fc(x)
@@ -872,11 +878,11 @@ class SimpleVitNet_AL(BaseNet):
         fc = AC_Linear(in_dim, Hidden, out_dim)
         return fc
 
-    def extract_vector(self, x):
-        return self.backbone(x)
+    def extract_vector(self, x, task=None):
+        return self.backbone(x, task=task)
 
-    def forward(self, x):
-        x = self.backbone(x)
+    def forward(self, x, task=None):
+        x = self.backbone(x, task=task)
         if self.ac_model == None:
             out = self.fc(x)
         else:

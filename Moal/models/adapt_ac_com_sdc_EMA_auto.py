@@ -41,9 +41,11 @@ class Learner(BaseLearner):
             self._network = SimpleCosineIncrementalNet(args, True)
             self.batch_size = 128
             self.init_lr = args["init_lr"] if args["init_lr"] is not None else 0.01
+            self.model_type = 'cnn'
         else:
             # self._network = SimpleVitNet(args, True)
             self._network = SimpleVitNet_AL(args, True)
+            self.model_type = self._network.model_type
             self.batch_size = args["batch_size"]
             self.init_lr = args["init_lr"]
             self.progressive_lr = args["progressive_lr"]
@@ -178,7 +180,10 @@ class Learner(BaseLearner):
             for train_batch in tqdm(train_loader):
                 _, inputs, targets = train_batch
                 inputs, targets = inputs.to(self._device), targets.to(self._device)
-                logits = self._network(inputs)["logits"]
+                if self.model_type == 'bilora':
+                    logits = self._network(inputs, task=self._cur_task)["logits"]
+                else:
+                    logits = self._network(inputs)["logits"]
 
                 loss = F.cross_entropy(logits, targets)
                 optimizer.zero_grad()
@@ -218,7 +223,10 @@ class Learner(BaseLearner):
             for train_batch in tqdm(train_loader):
                 _, inputs, targets = train_batch
                 inputs, targets = inputs.to(self._device), targets.to(self._device)
-                logits = self._network(inputs)["train_logits"]
+                if self.model_type == 'bilora':
+                    logits = self._network(inputs, task=self._cur_task)["train_logits"]
+                else:
+                    logits = self._network(inputs)["train_logits"]
 
                 loss_ce = F.cross_entropy(logits, targets)
                 loss = loss_ce
@@ -400,7 +408,11 @@ class Learner(BaseLearner):
         for batch in tqdm(loader):
             _, _inputs, _targets = batch
             _targets = _targets.numpy()
-            _vectors = tensor2numpy(self._network(_inputs.to(self._device))["features"])
+            if self.model_type == 'bilora':
+                tensor_features = self._network(_inputs.to(self._device), task=self._cur_task)["features"]
+            else:
+                tensor_features = self._network(_inputs.to(self._device))["features"]
+            _vectors = tensor2numpy(tensor_features)
             vectors.append(_vectors)
             targets.append(_targets)
         return_vectors = np.concatenate(vectors)
@@ -494,7 +506,11 @@ class Learner(BaseLearner):
                 images = data.to(self._device)
 
                 old_feature = tensor2numpy(self.old_network_module_ptr(images)["features"])
-                feature = tensor2numpy(self._network(images)["features"])
+                if self.model_type == 'bilora':
+                    tensor_features = self._network(images, task=self._cur_task)["features"]
+                else:
+                    tensor_features = self._network(images)["features"]
+                feature = tensor2numpy(tensor_features)
 
                 old_vectors.append(old_feature)
                 vectors.append(feature)  
