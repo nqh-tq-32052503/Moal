@@ -213,7 +213,7 @@ class Learner(BaseLearner):
     def _progreessive_train(self, train_loader, test_loader, optimizer, scheduler):
         print("Progressive training for task {}".format(self._cur_task))
         self.output_caches = []
-
+        self.label_caches = []
         EMA_model = self._network.copy().freeze()
         alpha = self.args['alpha']
 
@@ -233,6 +233,7 @@ class Learner(BaseLearner):
                     logits = outputs["train_logits"]
                 if run_cache:
                     self.output_caches.append(outputs)
+                    self.label_caches.append({"input" : inputs, "label" : targets})
                 loss_ce = F.cross_entropy(logits, targets)
                 loss = loss_ce
 
@@ -350,11 +351,12 @@ class Learner(BaseLearner):
         R = copy.deepcopy(self.R.float())
 
         with torch.no_grad():
-            pbar = tqdm(enumerate(trainloader), desc='Alignment', total=len(trainloader), unit='batch')
-            for i, batch in pbar:
-                (_, data, label) = batch
-                images = data.to(self._device)
-                target = label.to(self._device)
+            # pbar = tqdm(enumerate(trainloader), desc='Alignment', total=len(trainloader), unit='batch')
+            for i in range(len(self.output_caches)):
+                # (_, data, label) = batch
+                
+                # images = data.to(self._device)
+                target = self.label_caches[i]["label"]
                 # if self.model_type == 'bilora':
                 #     feature = model(images, task=self._cur_task)["features"]
                 # else:
@@ -484,7 +486,7 @@ class Learner(BaseLearner):
                 (_, data, label) = batch
                 features = data.to(self._device)
                 target = label.to(self._device)
-
+    
                 new_activation = model.ac_model.fc[:2](features.float())
                 label_onehot = F.one_hot(target, self._total_classes).float()
 
@@ -514,10 +516,8 @@ class Learner(BaseLearner):
         with torch.no_grad():
             old_vectors, vectors, targets = [], [], []
 
-            pbar = tqdm(enumerate(train_loader), desc='cali_prototye_model', total=len(train_loader), unit='batch')
-            for i, batch in pbar:
-                (_, data, label) = batch
-                images = data.to(self._device)
+            for i in range(len(self.output_caches)):
+                images = self.label_caches[i]["input"]
 
                 
                 if self.model_type == 'bilora':
