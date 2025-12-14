@@ -1210,16 +1210,20 @@ class MultiBranchCosineIncrementalNet_adapt_AC(BaseNet):
             fc = AC_Linear(in_dim, Hidden, out_dim)
         return fc
 
-    def extract_vector(self, x):
+    def extract_vector(self, x, task=None):
         if self.model_type == 'cnn':
             features = [backbone(x)["features"] for backbone in self.backbones]
+        elif self.model_type == 'bilora':
+            features = [backbone(x, task) for backbone in self.backbones]
         else:
             features = [backbone(x) for backbone in self.backbones]
         return features
 
-    def forward(self, x):
+    def forward(self, x, task=None):
         if self.model_type == 'cnn':
             features = [backbone(x)["features"] for backbone in self.backbones]
+        elif self.model_type == 'bilora':
+            features = [backbone(x, task) for backbone in self.backbones]
         else:
             features = [backbone(x) for backbone in self.backbones]
 
