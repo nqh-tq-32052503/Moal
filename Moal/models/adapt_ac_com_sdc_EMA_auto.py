@@ -8,6 +8,7 @@ from torch import optim
 from torch.nn import functional as F
 from utils.inc_net import SimpleCosineIncrementalNet, MultiBranchCosineIncrementalNet_adapt_AC
 from utils.AC_net import SimpleCosineIncrementalNet, SimpleVitNet_AL
+from utils.data_manager import DataManager
 from models.base import BaseLearner
 from backbone.linears import CosineLinear
 from utils.toolkit import target2onehot, tensor2numpy
@@ -69,7 +70,7 @@ class Learner(BaseLearner):
         else:
             self.old_network_module_ptr = self._old_network
 
-    def incremental_train(self, data_manager):
+    def incremental_train(self, data_manager: DataManager):
         self._cur_task += 1
         self._total_classes = self._known_classes + data_manager.get_task_size(self._cur_task)
         # self._network.update_fc(self._total_classes)
@@ -211,7 +212,7 @@ class Learner(BaseLearner):
 
     def _progreessive_train(self, train_loader, test_loader, optimizer, scheduler):
         print("Progressive training for task {}".format(self._cur_task))
-
+        self.output_caches = []
 
         EMA_model = self._network.copy().freeze()
         alpha = self.args['alpha']
@@ -220,14 +221,18 @@ class Learner(BaseLearner):
             self._network.train()
             losses = 0.0
             correct, total = 0, 0
+            run_cache = epoch == self.args['progreesive_epoch'] - 1
             for train_batch in tqdm(train_loader):
                 _, inputs, targets = train_batch
                 inputs, targets = inputs.to(self._device), targets.to(self._device)
                 if self.model_type == 'bilora':
-                    logits = self._network(inputs, task=self._cur_task)["train_logits"]
+                    outputs = self._network(inputs, task=self._cur_task)
+                    logits = outputs["train_logits"]
                 else:
-                    logits = self._network(inputs)["train_logits"]
-
+                    outputs = self._network(inputs)
+                    logits = outputs["train_logits"]
+                if run_cache:
+                    self.output_caches.append(outputs)
                 loss_ce = F.cross_entropy(logits, targets)
                 loss = loss_ce
 
@@ -260,7 +265,7 @@ class Learner(BaseLearner):
         for param, ema_param in zip(EMA_model.backbones[0].parameters(),
                                     self._network.backbones[0].parameters()):
             ema_param.data =  param.data
-
+        print("Cache size: {}".format(len(self.output_caches)))
         print(info)
 
     def cls_align(self, trainloader, model):
@@ -350,10 +355,11 @@ class Learner(BaseLearner):
                 (_, data, label) = batch
                 images = data.to(self._device)
                 target = label.to(self._device)
-                if self.model_type == 'bilora':
-                    feature = model(images, task=self._cur_task)["features"]
-                else:
-                    feature = model(images)["features"]
+                # if self.model_type == 'bilora':
+                #     feature = model(images, task=self._cur_task)["features"]
+                # else:
+                #     feature = model(images)["features"]
+                feature = self.output_caches[i]["features"]
                 new_activation = model.ac_model.fc[:2](feature)
                 label_onehot = F.one_hot(target, self._total_classes).float()
 
@@ -374,6 +380,8 @@ class Learner(BaseLearner):
 
     def _compute_means(self):
         print("Computing class means and covariance matrices...")
+        self.vectors_train = []
+        self.labels_train = []
         with torch.no_grad():
             for class_idx in range(self._known_classes, self._total_classes):
                 data, targets, idx_dataset = self.data_manager.get_dataset(np.arange(class_idx, class_idx + 1),
@@ -381,6 +389,8 @@ class Learner(BaseLearner):
                                                                            mode='test', ret_data=True)
                 idx_loader = DataLoader(idx_dataset, batch_size=self.args["batch_size"], shuffle=False, num_workers=4)
                 vectors, _ = self.extract_prototype(idx_loader)
+                self.vectors_train.append(vectors)
+                self.labels_train.append([class_idx] * len(vectors))
                 class_mean = np.mean(vectors, axis=0)
                 self._means.append(class_mean)
 
@@ -394,7 +404,7 @@ class Learner(BaseLearner):
                 # 计算各个特征的标准差
                 std_deviations = np.sqrt(variances)
                 self._std_deviations_matrix.append(std_deviations)
-
+            print("Generating pseudo-features for old classes from relations...")
     def _compute_relations(self):
         print("Computing class relations...")
         old_means = np.array(self._means[:self._known_classes])
@@ -427,18 +437,18 @@ class Learner(BaseLearner):
 
     def _build_feature_set(self):
         print("Building feature dataset...")
-        self.vectors_train = []
-        self.labels_train = []
+        # self.vectors_train = []
+        # self.labels_train = []
         print("Extract prototypes for known classes...")
-        for class_idx in range(self._known_classes, self._total_classes):
-            data, targets, idx_dataset = self.data_manager.get_dataset(np.arange(class_idx, class_idx + 1),
-                                                                       source='train',
-                                                                       mode='test', ret_data=True)
-            idx_loader = DataLoader(idx_dataset, batch_size=self.args["batch_size"], shuffle=False, num_workers=4)
-            vectors, _ = self.extract_prototype(idx_loader)
-            self.vectors_train.append(vectors)
-            self.labels_train.append([class_idx] * len(vectors))
-        print("Generating pseudo-features for old classes from relations...")
+        # for class_idx in range(self._known_classes, self._total_classes):
+        #     data, targets, idx_dataset = self.data_manager.get_dataset(np.arange(class_idx, class_idx + 1),
+        #                                                                source='train',
+        #                                                                mode='test', ret_data=True)
+        #     idx_loader = DataLoader(idx_dataset, batch_size=self.args["batch_size"], shuffle=False, num_workers=4)
+        #     vectors, _ = self.extract_prototype(idx_loader)
+        #     self.vectors_train.append(vectors)
+        #     self.labels_train.append([class_idx] * len(vectors))
+        # print("Generating pseudo-features for old classes from relations...")
         for class_idx in range(0, self._known_classes):
             new_idx = self._relations[class_idx]
             self.vectors_train.append(
@@ -512,10 +522,11 @@ class Learner(BaseLearner):
                 
                 if self.model_type == 'bilora':
                     old_tensor_features = self.old_network_module_ptr(images, task=self._cur_task)["features"]
-                    new_tensor_features = self._network(images, task=self._cur_task)["features"]
+                    # new_tensor_features = self._network(images, task=self._cur_task)["features"]
                 else:
                     old_tensor_features = self.old_network_module_ptr(images)["features"]
-                    new_tensor_features = self._network(images)["features"]
+                    # new_tensor_features = self._network(images)["features"]
+                new_tensor_features = self.output_caches[i]["features"]
                 old_feature = tensor2numpy(old_tensor_features)
                 feature = tensor2numpy(new_tensor_features)
 
@@ -523,85 +534,85 @@ class Learner(BaseLearner):
                 vectors.append(feature)  
         E_old = np.concatenate(old_vectors)
         E_new = np.concatenate(vectors)
-        A = E_old.copy()
-        B = E_new.copy()
-        ATA = A.T @ A
-        ATB = A.T @ B
-        W = solve(ATA, ATB)  # 使用 scipy.linalg.solve 求解线性方程组
-        # # 准备训练数据 
-        # X_tensor = torch.from_numpy(E_old).to(torch.float32)
+        # A = E_old.copy()
+        # B = E_new.copy()
+        # ATA = A.T @ A
+        # ATB = A.T @ B
+        # W = solve(ATA, ATB)  # 使用 scipy.linalg.solve 求解线性方程组
+        # 准备训练数据 
+        X_tensor = torch.from_numpy(E_old).to(torch.float32)
 
-        # y_tensor = torch.from_numpy(E_new).to(torch.float32)
+        y_tensor = torch.from_numpy(E_new).to(torch.float32)
 
-        # dataset = TensorDataset(X_tensor, y_tensor)
+        dataset = TensorDataset(X_tensor, y_tensor)
         
-        # # 划分训练集和测试集
-        # total_size = len(dataset)
-        # train_size = int(0.9 * total_size)  # 90% 为训练集
-        # test_size = total_size - train_size  # 剩余的 10% 为测试集
-        # train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
-        # # 创建数据加载器
-        # train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-        # test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+        # 划分训练集和测试集
+        total_size = len(dataset)
+        train_size = int(0.9 * total_size)  # 90% 为训练集
+        test_size = total_size - train_size  # 剩余的 10% 为测试集
+        train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
+        # 创建数据加载器
+        train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+        test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
         # 构造模型参数 && 模型初始化 
-        # in_features = E_old[0].shape[0]  # 输入维度
-        # out_dim = E_new[0].shape[0]       # 输出维度 
-        # calimodel = SimpleNN(in_features,out_dim)
-        # calimodel = calimodel.to(self._device)
-        # #calimodel.to(torch.float32) 
-        # # 设置 学习率 优化器 
-        # optimizer =optim.SGD(calimodel.parameters(), momentum=0.9, lr=0.01,
-        #     weight_decay=0.0005)
-        # scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=10,
-        #     eta_min=0)     
-        # prog_bar = tqdm(range(1000))
+        in_features = E_old[0].shape[0]  # 输入维度
+        out_dim = E_new[0].shape[0]       # 输出维度 
+        calimodel = SimpleNN(in_features,out_dim)
+        calimodel = calimodel.to(self._device)
+        #calimodel.to(torch.float32) 
+        # 设置 学习率 优化器 
+        optimizer = optim.SGD(calimodel.parameters(), momentum=0.9, lr=0.01,
+            weight_decay=0.0005)
+        scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=10,
+            eta_min=0)     
+        prog_bar = tqdm(range(50))
         
-        # # 保存训练过程中的最好模型
-        # best_loss = float('inf')  # 初始化为无穷大，假设损失越小越好  
-        # best_model_wts = None  
-        # print("开始 修正 prototype")
-        # for _, epoch in enumerate(prog_bar):
-        #     calimodel.train()
-        #     running_loss = 0.0 
-        #     for i, (inputs, targets) in enumerate(train_dataloader):
-        #         inputs, targets = inputs.to(self._device), targets.to(self._device)
-        #         #logits = calimodel(inputs)["logits"]
-        #         logits = calimodel(inputs)
-        #         criterion = nn.MSELoss()
-        #         # 计算二次范数损失
-        #         loss = criterion(logits, targets)
-        #         optimizer.zero_grad()
-        #         loss.backward()
-        #         optimizer.step()
-        #         running_loss += loss.item() * inputs.size(0)
-        #     # 计算每个epoch的平均损失 
-        #     scheduler.step() 
-        #     calimodel.eval()
-        #     test_loss = 0.0
-        #     #correct = 0
-        #     with torch.no_grad():
-        #         for inputs, targets in test_dataloader:
-        #             inputs, targets = inputs.to(self._device), targets.to(self._device)
-        #             logits = calimodel(inputs)
-        #             criterion = nn.MSELoss()
-        #             test_loss += criterion(logits, targets).item() * inputs.size(0)
+        # 保存训练过程中的最好模型
+        best_loss = float('inf')  # 初始化为无穷大，假设损失越小越好  
+        best_model_wts = None  
+        print("开始 修正 prototype")
+        for _, epoch in enumerate(prog_bar):
+            calimodel.train()
+            running_loss = 0.0 
+            for i, (inputs, targets) in enumerate(train_dataloader):
+                inputs, targets = inputs.to(self._device), targets.to(self._device)
+                #logits = calimodel(inputs)["logits"]
+                logits = calimodel(inputs)
+                criterion = nn.MSELoss()
+                # 计算二次范数损失
+                loss = criterion(logits, targets)
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+                running_loss += loss.item() * inputs.size(0)
+            # 计算每个epoch的平均损失 
+            scheduler.step() 
+            calimodel.eval()
+            test_loss = 0.0
+            #correct = 0
+            with torch.no_grad():
+                for inputs, targets in test_dataloader:
+                    inputs, targets = inputs.to(self._device), targets.to(self._device)
+                    logits = calimodel(inputs)
+                    criterion = nn.MSELoss()
+                    test_loss += criterion(logits, targets).item() * inputs.size(0)
     
-        #     test_loss /= len(test_dataset)
-        #     if test_loss < best_loss:  
-        #         #print(f'Epoch {epoch+1}, Loss: {epoch_loss:.4f}, Best model updated!')  
-        #         best_loss = test_loss  
-        #         best_model_wts = copy.deepcopy(calimodel.state_dict()) 
-        # print("best_loss: {}".format(best_loss))
-        # # 选取最好参数 
-        # calimodel.load_state_dict(best_model_wts)  
-        # calimodel.eval()
+            test_loss /= len(test_dataset)
+            if test_loss < best_loss:  
+                #print(f'Epoch {epoch+1}, Loss: {epoch_loss:.4f}, Best model updated!')  
+                best_loss = test_loss  
+                best_model_wts = copy.deepcopy(calimodel.state_dict()) 
+        print("best_loss: {}".format(best_loss))
+        # 选取最好参数 
+        calimodel.load_state_dict(best_model_wts)  
+        calimodel.eval()
         X_test = np.array(self._means)[:self._known_classes]
-        Y_test = X_test @ W  # 预测输出
-        #Y_test = calimodel(X_test.to(self._device))["logits"]
-        # Y_test = calimodel(X_test.to(self._device))
-        # Y_test = Y_test.to("cpu")  
-        # Y_test = Y_test.detach().numpy().tolist()
-        self._means[:self._known_classes] = Y_test.tolist()
+        # Y_test = X_test @ W  # 预测输出
+        Y_test = calimodel(X_test.to(self._device))["logits"]
+        Y_test = calimodel(X_test.to(self._device))
+        Y_test = Y_test.to("cpu")  
+        Y_test = Y_test.detach().numpy().tolist()
+        self._means[:self._known_classes] = Y_test
 
 
 
