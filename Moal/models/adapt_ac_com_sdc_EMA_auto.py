@@ -6,8 +6,7 @@ from torch.serialization import load
 from tqdm import tqdm
 from torch import optim
 from torch.nn import functional as F
-from utils.inc_net import SimpleCosineIncrementalNet, MultiBranchCosineIncrementalNet_adapt_AC, \
-    SimpleVitNet
+from utils.inc_net import SimpleCosineIncrementalNet, MultiBranchCosineIncrementalNet_adapt_AC
 from utils.AC_net import SimpleCosineIncrementalNet, SimpleVitNet_AL
 from models.base import BaseLearner
 from backbone.linears import CosineLinear
