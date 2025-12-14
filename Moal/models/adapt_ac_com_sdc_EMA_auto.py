@@ -486,7 +486,7 @@ class Learner(BaseLearner):
                 (_, data, label) = batch
                 features = data.to(self._device)
                 target = label.to(self._device)
-    
+
                 new_activation = model.ac_model.fc[:2](features.float())
                 label_onehot = F.one_hot(target, self._total_classes).float()
 
@@ -608,7 +608,7 @@ class Learner(BaseLearner):
         calimodel.eval()
         X_test = torch.from_numpy(np.array(self._means)[:self._known_classes]).to(torch.float32)
         # Y_test = X_test @ W  # 预测输出
-        Y_test = calimodel(X_test.to(self._device))["logits"]
+        # Y_test = calimodel(X_test.to(self._device))["logits"]
         Y_test = calimodel(X_test.to(self._device))
         Y_test = Y_test.to("cpu")  
         Y_test = Y_test.detach().numpy().tolist()
