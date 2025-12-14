@@ -354,7 +354,7 @@ class VisionTransformer(nn.Module):
 
 
 def vit_base_patch16_224_bilora(pretrained=True, **kwargs):
-    from Moal.models.bilora import VisionTransformerBiLoRA
+    from models.bilora import VisionTransformerBiLoRA
     model = VisionTransformerBiLoRA(num_classes=0, patch_size=16, embed_dim=768, depth=12, num_heads=12, mlp_ratio=4, qkv_bias=True,
         norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
 

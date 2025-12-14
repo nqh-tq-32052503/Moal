@@ -2,11 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
-from Moal.backbone.vision_transformer_adapter import VisionTransformer, Block
 from timm.models.layers import PatchEmbed, Mlp, DropPath, trunc_normal_, lecun_normal_
 from functools import partial
 from collections import OrderedDict
-from timm.models.helpers import checkpoint_seq
 
 class BlockBiLoRA(nn.Module):
 
