@@ -198,7 +198,7 @@ class Learner(BaseLearner):
             scheduler.step()
             train_acc = np.around(tensor2numpy(correct) * 100 / total, decimals=2)
 
-            test_acc = self._compute_accuracy(self._network, test_loader)
+            test_acc = self._compute_accuracy(self._network, test_loader, task=self._cur_task)
             info = "Task {}, Epoch {}/{} => Loss {:.3f}, Train_accy {:.2f}, Test_accy {:.2f}".format(
                 self._cur_task,
                 epoch + 1,
@@ -246,7 +246,7 @@ class Learner(BaseLearner):
             scheduler.step()
             train_acc = np.around(tensor2numpy(correct) * 100 / total, decimals=2)
 
-            test_acc = self._compute_ac_train_accuracy(self._network, test_loader)
+            test_acc = self._compute_ac_train_accuracy(self._network, test_loader, task=self._cur_task)
             info = "Task {}, Epoch {}/{} => Loss {:.3f}, Train_accy {:.2f}, Test_accy {:.2f}".format(
                 self._cur_task,
                 epoch + 1,

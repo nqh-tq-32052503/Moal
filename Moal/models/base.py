@@ -25,6 +25,12 @@ class BaseLearner(object):
         self._fixed_memory = args.get("fixed_memory", False)
         self._device = args["device"][0]
         self._multiple_gpus = args["device"]
+        if 'resnet' in args['backbone_type']:
+            self.model_type = 'cnn'
+        elif 'bilora' in args['backbone_type']:
+            self.model_type = 'bilora'
+        else:
+            self.model_type = 'vit'
         self.args = args
 
     @property
@@ -136,44 +142,38 @@ class BaseLearner(object):
         else:
             return (self._data_memory, self._targets_memory)
 
-    def _compute_accuracy(self, model, loader):
+    def _compute_accuracy(self, model, loader, task=None):
         model.eval()
         correct, total = 0, 0
         for i, (_, inputs, targets) in enumerate(loader):
             inputs = inputs.to(self._device)
             with torch.no_grad():
-                outputs = model(inputs)["logits"]
+                if self.model_type == 'bilora':
+                    outputs = model(inputs, task=task)["logits"]
+                else:
+                    outputs = model(inputs)["logits"]
             predicts = torch.max(outputs, dim=1)[1]
             correct += (predicts.cpu() == targets).sum()
             total += len(targets)
 
         return np.around(tensor2numpy(correct) * 100 / total, decimals=2)
 
-    def _compute_ac_train_accuracy(self, model, loader):
+    def _compute_ac_train_accuracy(self, model, loader, task=None):
         model.eval()
         correct, total = 0, 0
         for i, (_, inputs, targets) in enumerate(loader):
             inputs = inputs.to(self._device)
             with torch.no_grad():
-                outputs = model(inputs)["train_logits"]
+                if self.model_type == 'bilora':
+                    outputs = model(inputs, task=task)["train_logits"]
+                else:
+                    outputs = model(inputs)["train_logits"]
             predicts = torch.max(outputs, dim=1)[1]
             correct += (predicts.cpu() == targets).sum()
             total += len(targets)
 
         return np.around(tensor2numpy(correct) * 100 / total, decimals=2)
 
-    def _compute_ac_train_accuracy_single(self, model, loader):
-        model.eval()
-        correct, total = 0, 0
-        for i, (_, inputs, targets) in enumerate(loader):
-            inputs = inputs.to(self._device)
-            with torch.no_grad():
-                outputs = model.forward_train(inputs)["train_logits"]
-            predicts = torch.max(outputs, dim=1)[1]
-            correct += (predicts.cpu() == targets).sum()
-            total += len(targets)
-
-        return np.around(tensor2numpy(correct) * 100 / total, decimals=2)
 
     def _eval_cnn(self, loader):
         self._network.eval()
