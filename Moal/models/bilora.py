@@ -169,33 +169,16 @@ class VisionTransformerBiLoRA(nn.Module):
         final_chs = self.representation_size if self.representation_size else self.embed_dim
         self.head = nn.Linear(final_chs, num_classes) if num_classes > 0 else nn.Identity()
 
-    def forward_features(self, x):
+    def forward_features(self, x, task):
         x = self.patch_embed(x)
         x = torch.cat((self.cls_token.expand(x.shape[0], -1, -1), x), dim=1)
 
         x = self.pos_drop(x + self.pos_embed)
-        if self.grad_checkpointing and not torch.jit.is_scripting():
-            x = checkpoint_seq(self.blocks, x)
-        else:
-            x = self.blocks(x)
+        for i, blk in enumerate(self.blocks):
+            x = blk(x, task=task)
         x = self.norm(x)
-        return x
-
-    def forward_features_grow(self, x, class_num):
-        x = self.patch_embed(x)
-        # x = torch.cat((self.cls_token_grow[:, :class_num, :].expand(x.shape[0], -1, -1), self.cls_token.expand(x.shape[0], -1, -1), x), dim=1)
-        # x = self.pos_drop(x + self.pos_embed_grow[:, :self.patch_embed.num_patches+class_num, :])
-        x = torch.cat((self.cls_token.expand(x.shape[0], -1, -1), x), dim=1)
-        x = self.pos_drop(x + self.pos_embed)
-        x = torch.cat((self.cls_token_grow[:, :class_num*2, :].expand(x.shape[0], -1, -1), x), dim=1)
-
-        # import pdb;pdb.set_trace()
-        if self.grad_checkpointing and not torch.jit.is_scripting():
-            x = checkpoint_seq(self.blocks, x)
-        else:
-            x = self.blocks(x)
-        x = self.norm(x)
-        return x
+        outcome = x[:, 0]
+        return outcome
 
     def forward_head(self, x, pre_logits: bool = False):
         if self.global_pool:
@@ -205,19 +188,9 @@ class VisionTransformerBiLoRA(nn.Module):
         return x if pre_logits else self.head(x)
 
     def forward(self, x, task):
-        x = self.patch_embed(x)
-        x = torch.cat((self.cls_token.expand(x.shape[0], -1, -1), x), dim=1)
-
-        x = x + self.pos_embed[:,:x.size(1),:]
-        x = self.pos_drop(x)
-
-        prompt_loss = torch.zeros((1,), requires_grad=True).to(x.device)
-        for i, blk in enumerate(self.blocks):
-            x = blk(x, task=task)
-
-        x = self.norm(x)
-        
-        return x, prompt_loss
+        x = self.forward_features(x, task)
+        x = self.head(x)
+        return x
 
 def init_weights_vit_timm(module: nn.Module, name: str = ''):
     """ ViT weight initialization, original timm impl (for reproducibility) """

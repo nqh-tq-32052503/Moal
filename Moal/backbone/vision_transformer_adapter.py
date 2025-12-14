@@ -373,8 +373,8 @@ def vit_base_patch16_224_bilora(pretrained=True, **kwargs):
             if name not in missing_keys:
                 # key match giữa model và pretrained
                 param.requires_grad = False
-        return model, incompatible
-    return model, None
+        return model
+    return model
 
 def \
         vit_base_patch16_224_adapter(pretrained=False, **kwargs):
