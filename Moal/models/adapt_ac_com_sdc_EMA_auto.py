@@ -606,7 +606,7 @@ class Learner(BaseLearner):
         # 选取最好参数 
         calimodel.load_state_dict(best_model_wts)  
         calimodel.eval()
-        X_test = np.array(self._means)[:self._known_classes]
+        X_test = torch.from_numpy(np.array(self._means)[:self._known_classes]).to(torch.float32)
         # Y_test = X_test @ W  # 预测输出
         Y_test = calimodel(X_test.to(self._device))["logits"]
         Y_test = calimodel(X_test.to(self._device))
