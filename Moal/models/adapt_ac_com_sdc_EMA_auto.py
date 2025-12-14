@@ -6,9 +6,9 @@ from torch.serialization import load
 from tqdm import tqdm
 from torch import optim
 from torch.nn import functional as F
-from utils.inc_net import IncrementalNet, SimpleCosineIncrementalNet, MultiBranchCosineIncrementalNet_adapt_AC, \
+from utils.inc_net import SimpleCosineIncrementalNet, MultiBranchCosineIncrementalNet_adapt_AC, \
     SimpleVitNet
-from utils.AC_net import IncrementalNet, SimpleCosineIncrementalNet, SimpleVitNet, SimpleVitNet_AL
+from utils.AC_net import SimpleCosineIncrementalNet, SimpleVitNet_AL
 from models.base import BaseLearner
 from backbone.linears import CosineLinear
 from utils.toolkit import target2onehot, tensor2numpy
@@ -287,8 +287,10 @@ class Learner(BaseLearner):
                 target = label.to(self._device)
 
                 label_list.append(target.cpu())
-
-                feature = model(images)["features"]
+                if self.model_type == 'bilora':
+                    feature = model(images, task=self._cur_task)["features"]
+                else:
+                    feature = model(images)["features"]
                 new_activation = model.ac_model.fc[:2](feature)
 
                 embedding_list.append(new_activation.cpu())
@@ -348,8 +350,10 @@ class Learner(BaseLearner):
                 (_, data, label) = batch
                 images = data.to(self._device)
                 target = label.to(self._device)
-
-                feature = model(images)["features"]
+                if self.model_type == 'bilora':
+                    feature = model(images, task=self._cur_task)["features"]
+                else:
+                    feature = model(images)["features"]
                 new_activation = model.ac_model.fc[:2](feature)
                 label_onehot = F.one_hot(target, self._total_classes).float()
 
@@ -505,12 +509,15 @@ class Learner(BaseLearner):
                 (_, data, label) = batch
                 images = data.to(self._device)
 
-                old_feature = tensor2numpy(self.old_network_module_ptr(images)["features"])
+                
                 if self.model_type == 'bilora':
-                    tensor_features = self._network(images, task=self._cur_task)["features"]
+                    old_tensor_features = self.old_network_module_ptr(images, task=self._cur_task)["features"]
+                    new_tensor_features = self._network(images, task=self._cur_task)["features"]
                 else:
-                    tensor_features = self._network(images)["features"]
-                feature = tensor2numpy(tensor_features)
+                    old_tensor_features = self.old_network_module_ptr(images)["features"]
+                    new_tensor_features = self._network(images)["features"]
+                old_feature = tensor2numpy(old_tensor_features)
+                feature = tensor2numpy(new_tensor_features)
 
                 old_vectors.append(old_feature)
                 vectors.append(feature)  
