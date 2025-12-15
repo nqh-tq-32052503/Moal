@@ -304,7 +304,7 @@ class VisionTransformer(nn.Module):
 
         return outcome
 
-    def forward(self, x):
+    def forward(self, x, task=None):
         x = self.forward_features(x,)
         if self.head_dist is not None:
             x, x_dist = self.head(x[0]), self.head_dist(x[1])  # x must be a tuple
