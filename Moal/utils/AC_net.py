@@ -523,10 +523,10 @@ class BiLoRAIncNet(BaseNet):
 
     def update_fc(self, cosine_fc = False):
         if cosine_fc:
-            fc = CosineLinear2(self.feature_dim, self.args["increment"])
+            fc = CosineLinear2(self.feature_dim, self.args["increment"]).to(self._device)
             self.list_fc.append(fc)
         else:
-            ac_model = AC_Linear(self.feature_dim, self.args["Hidden"], self.args["increment"])
+            ac_model = AC_Linear(self.feature_dim, self.args["Hidden"], self.args["increment"]).to(self._device)
             self.list_ac.append(ac_model)
     
     def forward(self, x, task=None):
