@@ -374,7 +374,7 @@ class Learner(BaseLearner):
         print('numpy inverse')
         # model.list_ac[-1].fc[-1].weight = torch.nn.parameter.Parameter(torch.t(W.float()))
         N = len(model.list_ac)
-        W_t = W.float() # Nếu W đã là (10N, 5000) thì không cần .t() nữa, 
+        W_t = torch.t(W.float()) # Nếu W đã là (10N, 5000) thì không cần .t() nữa, 
                         # vì nó đã khớp định dạng [out, in] của PyTorch
 
         # Chia W thành N phần, mỗi phần có 10 hàng
@@ -514,7 +514,7 @@ class Learner(BaseLearner):
         print('numpy inverse')
         # model.list_ac[-1].fc[-1].weight = torch.nn.parameter.Parameter(torch.t(W.float()))
         N = len(model.list_ac)
-        W_t = W.float() # Nếu W đã là (10N, 5000) thì không cần .t() nữa, 
+        W_t = torch.t(W.float()) # Nếu W đã là (10N, 5000) thì không cần .t() nữa, 
                         # vì nó đã khớp định dạng [out, in] của PyTorch
 
         # Chia W thành N phần, mỗi phần có 10 hàng
