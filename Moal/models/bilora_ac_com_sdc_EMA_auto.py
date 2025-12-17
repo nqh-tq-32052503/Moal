@@ -346,8 +346,8 @@ class Learner(BaseLearner):
 
         # AL training process
         model = model.eval()
-
-        W = (model.list_ac[-1].fc[-1].weight.t()).float()
+        W = torch.cat([ac_model.fc[-1].weight.t().float() for ac_model in model.list_ac], dim=1)
+        # W = (model.list_ac[-1].fc[-1].weight.t()).float()
         R = copy.deepcopy(self.R.float())
 
         with torch.no_grad():
@@ -477,7 +477,7 @@ class Learner(BaseLearner):
         # AL training process
         model = model.eval()
 
-        W = (model.list_ac[-1].fc[-1].weight.t()).float()
+        W = torch.cat([ac_model.fc[-1].weight.t().float() for ac_model in model.list_ac], dim=1)
         R = copy.deepcopy(self.R.float())
 
         with torch.no_grad():
