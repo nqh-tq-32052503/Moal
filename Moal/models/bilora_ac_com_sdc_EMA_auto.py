@@ -131,6 +131,7 @@ class Learner(BaseLearner):
         else:
             self._network.update_fc(cosine_fc=True)
             self._network.update_fc()
+            self._network.update_task()
             for i in range(len(self._network.list_ac)):
                 for param in self._network.list_ac[i].parameters():
                     param.requires_grad = False
@@ -231,6 +232,9 @@ class Learner(BaseLearner):
                     self.output_caches.append(outputs)
                     self.label_caches.append({"input" : inputs, "label" : targets})
                 loss_ce = F.cross_entropy(logits, targets)
+                print("Logits", logits)
+                print("Targets", targets)
+                print("Loss_ce", loss_ce)
                 loss = loss_ce
 
                 optimizer.zero_grad()
