@@ -126,6 +126,7 @@ class Learner(BaseLearner):
             self._network.list_fc = nn.ModuleList()
             self._network.update_fc(cosine_fc=True)
             self._network.update_fc()
+            self._network.update_task()
 
         else:
             self._network.update_fc(cosine_fc=True)
