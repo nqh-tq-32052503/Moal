@@ -53,6 +53,8 @@ class Learner(BaseLearner):
         self._cov_matrix = []
         self._std_deviations_matrix = []
         self.cache = {}
+    def next_task(self):
+        self._network.update_task()
 
     def after_task(self):
         self._known_classes = self._total_classes
@@ -91,7 +93,7 @@ class Learner(BaseLearner):
         if len(self._multiple_gpus) > 1:
             self._network = self._network.module
         print("Finish one task ")
-        self._network.update_task()
+        
 
     def _train(self, train_loader, test_loader, train_loader_for_protonet):
 
