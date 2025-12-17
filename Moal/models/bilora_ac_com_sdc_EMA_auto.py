@@ -232,9 +232,6 @@ class Learner(BaseLearner):
                     self.output_caches.append(outputs)
                     self.label_caches.append({"input" : inputs, "label" : targets})
                 loss_ce = F.cross_entropy(logits, targets)
-                print("Logits", logits)
-                print("Targets", targets)
-                print("Loss_ce", loss_ce)
                 loss = loss_ce
 
                 optimizer.zero_grad()
