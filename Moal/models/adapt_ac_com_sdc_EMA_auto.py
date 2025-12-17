@@ -315,7 +315,7 @@ class Learner(BaseLearner):
         print("gamma {}".format(ridge))
 
         print('numpy inverse')
-        R = np.mat(auto_cor.cpu().numpy() + ridge * np.eye(model.ac_model.fc[-1].weight.size(1))).I
+        R = np.asmatrix(auto_cor.cpu().numpy() + ridge * np.eye(model.ac_model.fc[-1].weight.size(1))).I
         R = torch.tensor(R).float().to(self._device)
         Delta = R @ crs_cor
         model.ac_model.fc[-1].weight = torch.nn.parameter.Parameter(torch.t(0.9 * Delta.float()))
