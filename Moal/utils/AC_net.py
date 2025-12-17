@@ -2,7 +2,7 @@ import copy
 import logging
 import torch
 from torch import nn
-from backbone.linears import SimpleLinear, SplitCosineLinear, CosineLinear, AC_Linear
+from backbone.linears import SimpleLinear, SplitCosineLinear, CosineLinear, AC_Linear, CosineLinear2
 import timm
 
 def get_backbone(args, pretrained=False):
@@ -501,3 +501,42 @@ class SimpleVitNet_AL(BaseNet):
         out.update({"features": x})
         # out.update({"train_logits": out["logits"]})
         return out
+
+class BiLoRAIncNet(BaseNet):
+    def __init__(self, args, pretrained):
+        super().__init__(args, pretrained)
+        self.ac_model = None
+        self.args = args
+        self.current_task = 0
+        self.list_fc = nn.ModuleList([CosineLinear(self.feature_dim, self.args["init_cls"])])
+        self.list_ac = nn.ModuleList()
+    
+    def update_task(self):
+        self.current_task += 1
+
+    def update_fc(self, cosine_fc = False):
+        if cosine_fc:
+            fc = CosineLinear2(self.feature_dim, self.args["increment"])
+            self.list_fc.append(fc)
+        else:
+            ac_model = AC_Linear(self.feature_dim, self.args["Hidden"], self.args["increment"])
+            self.list_ac.append(ac_model)
+    
+    def forward(self, x, task=None):
+        x = self.backbone(x, task=task)
+        if self.current_task == 1:
+            out = self.list_fc[0](x)
+            out.update({"features": x})
+            return out
+        else:
+            fc_heads = self.list_fc[:self.current_task]
+            ac_heads = self.list_ac[:self.current_task]
+            fc_logits = [head(x) for head in fc_heads]
+            fc_out = torch.cat([fc_logit['train_logits'] for fc_logit in fc_logits], dim=1)
+            train_out = {'train_logits': fc_out}
+            ac_logits = [head(x) for head in ac_heads]
+            ac_out = torch.cat([ac_logit['logits'] for ac_logit in ac_logits], dim=1)
+            out = {'logits': ac_out}
+            out.update({"features": x})
+            out.update({"train_logits": train_out["train_logits"]})
+            return out
