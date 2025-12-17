@@ -137,6 +137,12 @@ class Attention(nn.Module):
 
         return x
 
+class ZeroAdapter(nn.Module):
+    def __init__(self):
+        super().__init__()
+    
+    def forward(self, x, add_residual=True, residual=None):
+        return torch.zeros_like(x)
 
 class Block(nn.Module):
 
@@ -157,11 +163,12 @@ class Block(nn.Module):
         self.mlp_drop = nn.Dropout(drop)
 
         if config.ffn_adapt:
-            self.adaptmlp = Adapter(self.config, dropout=0.1, bottleneck=config.ffn_num,
-                                    init_option=config.ffn_adapter_init_option,
-                                    adapter_scalar=config.ffn_adapter_scalar,
-                                    adapter_layernorm_option=config.ffn_adapter_layernorm_option,
-                                    )
+            self.adaptmlp = ZeroAdapter()
+            # self.adaptmlp = Adapter(self.config, dropout=0.1, bottleneck=config.ffn_num,
+            #                         init_option=config.ffn_adapter_init_option,
+            #                         adapter_scalar=config.ffn_adapter_scalar,
+            #                         adapter_layernorm_option=config.ffn_adapter_layernorm_option,
+            #                         )
 
     def forward(self, x):
         x = x + self.drop_path(self.attn(self.norm1(x)))
