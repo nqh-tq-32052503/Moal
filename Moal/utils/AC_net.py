@@ -506,6 +506,7 @@ class BiLoRAIncNet(BaseNet):
     def __init__(self, args, pretrained):
         super().__init__(args, pretrained)
         self.args = args
+        self.feature_dim = self.backbone.out_dim
 
     def init_ac_fc(self):
         self.ac_model = None
