@@ -372,7 +372,15 @@ class Learner(BaseLearner):
             print("Updated correlation matrix R shape: {}".format(R.shape))
 
         print('numpy inverse')
-        model.list_ac[-1].fc[-1].weight = torch.nn.parameter.Parameter(torch.t(W.float()))
+        # model.list_ac[-1].fc[-1].weight = torch.nn.parameter.Parameter(torch.t(W.float()))
+        N = len(model.list_ac)
+        W_t = W.float() # Nếu W đã là (10N, 5000) thì không cần .t() nữa, 
+                        # vì nó đã khớp định dạng [out, in] của PyTorch
+
+        # Chia W thành N phần, mỗi phần có 10 hàng
+        w_parts = torch.split(W_t, split_size_or_sections=10, dim=0)
+        for i in range(N):
+            model.list_ac[i].fc[-1].weight = torch.nn.Parameter(w_parts[i])
         self.R = R
         del R
 
@@ -504,7 +512,16 @@ class Learner(BaseLearner):
                 W = W + R @ new_activation.t() @ (label_onehot - new_activation @ W)
 
         print('numpy inverse')
-        model.list_ac[-1].fc[-1].weight = torch.nn.parameter.Parameter(torch.t(W.float()))
+        # model.list_ac[-1].fc[-1].weight = torch.nn.parameter.Parameter(torch.t(W.float()))
+        N = len(model.list_ac)
+        W_t = W.float() # Nếu W đã là (10N, 5000) thì không cần .t() nữa, 
+                        # vì nó đã khớp định dạng [out, in] của PyTorch
+
+        # Chia W thành N phần, mỗi phần có 10 hàng
+        w_parts = torch.split(W_t, split_size_or_sections=10, dim=0)
+
+        for i in range(N):
+            model.list_ac[i].fc[-1].weight = torch.nn.Parameter(w_parts[i])
         self.R = R
         del R
 
