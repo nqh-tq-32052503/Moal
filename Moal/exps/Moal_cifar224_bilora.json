@@ -7,7 +7,7 @@
     "shuffle": true,
     "init_cls": 10,
     "increment": 10,
-    "model_name": "adapt_ac_com_sdc_ema_auto",
+    "model_name": "bilora_ac_com_sdc_ema_auto",
     "backbone_type": "vit_base_patch16_224_bilora_adapter",
     "device": [
         "cuda"

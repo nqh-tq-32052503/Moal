@@ -16,6 +16,8 @@ def get_model(model_name, args):
         from models.adapt_ac_kd_com_sdc import Learner
     elif name == "adapt_ac_com_sdc_ema_auto":
         from models.adapt_ac_com_sdc_EMA_auto import Learner
+    elif name == "bilora_ac_com_sdc_ema_auto":
+        from models.bilora_ac_com_sdc_EMA_auto import Learner
     elif name == "adapt_ac_kd_before_com_sdc":
         from models.adapt_ac_kd_before_com_sdc import Learner
     elif name == "adapt_ac_com_sdc":
