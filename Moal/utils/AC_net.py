@@ -87,6 +87,7 @@ def get_backbone(args, pretrained=False):
             from backbone import vision_transformer_adapter
             model = vision_transformer_adapter.vit_base_patch16_224_bilora(pretrained=True)
             model.out_dim=768
+            return model.eval()
     else:
         raise NotImplementedError("Unknown type {}".format(name))
 
