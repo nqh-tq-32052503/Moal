@@ -505,8 +505,10 @@ class SimpleVitNet_AL(BaseNet):
 class BiLoRAIncNet(BaseNet):
     def __init__(self, args, pretrained):
         super().__init__(args, pretrained)
-        self.ac_model = None
         self.args = args
+
+    def init_ac_fc(self):
+        self.ac_model = None
         self.current_task = 0
         self.list_fc = nn.ModuleList([CosineLinear(self.feature_dim, self.args["init_cls"])])
         self.list_ac = nn.ModuleList()

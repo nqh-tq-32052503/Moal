@@ -39,6 +39,7 @@ class Learner(BaseLearner):
             raise NotImplementedError('Adapter requires Adapter backbone')
             # self._network = SimpleVitNet(args, True)
         self._network = BiLoRAIncNet(args, True)
+        self._network.init_ac_fc()
         self.model_type = self._network.model_type
         self.batch_size = args["batch_size"]
         self.init_lr = args["init_lr"]
