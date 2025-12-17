@@ -53,8 +53,13 @@ class Learner(BaseLearner):
         self._cov_matrix = []
         self._std_deviations_matrix = []
         self.cache = {}
+
     def next_task(self):
-        self._network.update_task()
+        try:
+            self._network.update_task()
+            print("Network updated for new task.")
+        except:
+            pass
 
     def after_task(self):
         self._known_classes = self._total_classes
