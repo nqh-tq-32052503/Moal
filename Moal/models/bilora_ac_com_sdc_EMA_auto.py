@@ -66,7 +66,6 @@ class Learner(BaseLearner):
 
     def incremental_train(self, data_manager: DataManager):
         self._cur_task += 1
-        self._network.update_task()
         self._total_classes = self._known_classes + data_manager.get_task_size(self._cur_task)
         # self._network.update_fc(self._total_classes)
         print("Learning on {}-{}".format(self._known_classes, self._total_classes))
@@ -92,6 +91,7 @@ class Learner(BaseLearner):
         if len(self._multiple_gpus) > 1:
             self._network = self._network.module
         print("Finish one task ")
+        self._network.update_task()
 
     def _train(self, train_loader, test_loader, train_loader_for_protonet):
 

@@ -531,10 +531,8 @@ class BiLoRAIncNet(BaseNet):
     
     def forward(self, x, task=None):
         x = self.backbone(x, task=task)
-        if self.current_task == 1:
+        if self.current_task == 0:
             out = self.list_fc[0](x)
-            print(out)
-            print(self.list_fc)
             out.update({"features": x})
             return out
         else:
