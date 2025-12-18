@@ -39,7 +39,6 @@ class Learner(BaseLearner):
             raise NotImplementedError('Adapter requires Adapter backbone')
             # self._network = SimpleVitNet(args, True)
         self._network = BiLoRAIncNet(args, True)
-        self._network.init_ac_fc()
         self.model_type = self._network.model_type
         self.batch_size = args["batch_size"]
         self.init_lr = args["init_lr"]
@@ -51,11 +50,18 @@ class Learner(BaseLearner):
         self.R = None
         self._means = []
     
+    def init_fc_ac(self):
+        self._network.init_ac_fc()
+
     def init_from_previous_checkpoint(self, previous_task_checkpoint="./checkpoint.pth"):
         previous_checkpoint = torch.load(previous_task_checkpoint, map_location='cpu', weights_only=False)
-        self._old_network = BiLoRAIncNet(self.args, True)
-        self._old_network.load_state_dict(previous_checkpoint['network'])
-        self._old_network = self._old_network.freeze().to(self._device)
+        self._network = BiLoRAIncNet(self.args, True)
+        self._network.load_state_dict(previous_checkpoint['network'], strict=False)
+        self._network.current_task = previous_checkpoint["current_network_task"]
+        self._network.load_fc(previous_checkpoint['network'])
+        self._network.load_ac(previous_checkpoint['network'])
+        self._network.to(self._device)
+        self._old_network = self._network.copy().freeze().to(self._device)
         self.old_network_module_ptr = self._old_network
         self._known_classes = previous_checkpoint['known_classes']
         self._total_classes = previous_checkpoint['total_classes']
@@ -67,6 +73,7 @@ class Learner(BaseLearner):
     def save_after_task(self, path="./checkpoint.pth"):
         state = {
             'network': self._network.state_dict(),
+            "current_network_task": self._network.current_task,
             'known_classes': self._known_classes,
             'total_classes': self._total_classes,
             'cur_task': self._cur_task,

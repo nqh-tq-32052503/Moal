@@ -512,6 +512,31 @@ class BiLoRAIncNet(BaseNet):
         super().__init__(args, pretrained)
         self.args = args
 
+    def load_fc(self, previous_weights):
+        fc_keys = [k for k in previous_weights.keys() if k.startswith("list_fc")]
+        fc_weight_keys = [k for k in fc_keys if "weight" in fc_keys]
+        fc_sigma_keys = [k for k in fc_keys if "sigma" in fc_keys]
+        N_fcs = len(fc_weight_keys)
+        old_fcs = [CosineLinear2(self.feature_dim, self.args["increment"]) for _ in range(N_fcs)]
+        for i in range(N_fcs):
+            old_fcs[i].weight = torch.nn.Parameter(previous_weights[fc_weight_keys[i]])
+            old_fcs[i].sigma = torch.nn.Parameter(previous_weights[fc_sigma_keys[i]])
+        self.list_fc = nn.ModuleList(old_fcs)
+        print("Load FC layers successfully")
+
+    def load_ac(self, previous_weights):
+        ac_keys = [k for k in previous_weights.keys() if k.startswith("list_ac")]
+        ac_fc0_keys = [k for k in ac_keys if "fc.0" in ac_keys]
+        ac_fc2_keys = [k for k in ac_keys if "fc.2" in ac_keys]
+        N_acs = len(ac_fc0_keys)
+        old_acs = [AC_Linear(self.feature_dim, self.args["Hidden"], self.args["increment"]) for _ in range(N_acs)]
+        for i in range(N_acs):
+            old_acs[i].fc[0].weight = torch.nn.Parameter(previous_weights[ac_fc0_keys[i]])
+            old_acs[i].fc[2].weight = torch.nn.Parameter(previous_weights[ac_fc2_keys[i]])
+        self.list_ac = nn.ModuleList(old_acs)
+        print("Load AC layers successfully")
+
+
     def init_ac_fc(self):
         self.ac_model = None
         self.current_task = 0
