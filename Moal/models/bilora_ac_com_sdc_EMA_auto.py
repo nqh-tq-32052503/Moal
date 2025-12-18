@@ -66,7 +66,7 @@ class Learner(BaseLearner):
         self._known_classes = previous_checkpoint['known_classes']
         self._total_classes = previous_checkpoint['total_classes']
         self._cur_task = previous_checkpoint['cur_task']
-        self._means = [mean.numpy() for mean in previous_checkpoint['means']]
+        self._means = [torch.tensor(mean).numpy() for mean in previous_checkpoint['means']]
         self.R = previous_checkpoint['R'].to(self._device)
         print("Loaded previous task checkpoint from {}".format(previous_task_checkpoint))
 
@@ -77,7 +77,7 @@ class Learner(BaseLearner):
             'known_classes': self._known_classes,
             'total_classes': self._total_classes,
             'cur_task': self._cur_task,
-            'means': [torch.from_numpy(mean) for mean in self._means],
+            'means': [torch.from_numpy(np.array(mean)) for mean in self._means],
             'R': self.R,
         }
         torch.save(state, path)
