@@ -73,7 +73,7 @@ def _train(args):
         model.incremental_train(data_manager)
         cnn_accy, nme_accy = model.eval_task(model._cur_task)
         model.after_task()
-
+        model.save_after_task()
         if nme_accy is not None:
             print("CNN: {}".format(cnn_accy["grouped"]))
             print("NME: {}".format(nme_accy["grouped"]))

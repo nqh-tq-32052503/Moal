@@ -33,7 +33,7 @@ class SimpleNN(nn.Module):
         x = self.fc(x)  
         return x  
 class Learner(BaseLearner):
-    def __init__(self, args):
+    def __init__(self, args, previous_task_checkpoint=None):
         super().__init__(args)
         if 'adapter' not in args["backbone_type"]:
             raise NotImplementedError('Adapter requires Adapter backbone')
@@ -50,10 +50,30 @@ class Learner(BaseLearner):
         self.args = args
         self.R = None
         self._means = []
-        self._cov_matrix = []
-        self._std_deviations_matrix = []
-        self.cache = {}
+        if previous_task_checkpoint is not None:
+            previous_checkpoint = torch.load(previous_task_checkpoint, map_location='cpu', weights_only=False)
+            self._old_network = BiLoRAIncNet(args, True)
+            self._old_network.load_state_dict(previous_checkpoint['network'])
+            self._old_network = self._old_network.freeze()
+            self.old_network_module_ptr = self._old_network
+            self._known_classes = previous_checkpoint['known_classes']
+            self._total_classes = previous_checkpoint['total_classes']
+            self._cur_task = previous_checkpoint['cur_task']
+            self._means = [mean.numpy() for mean in previous_checkpoint['means']]
+            self.R = previous_checkpoint['R']
+            print("Loaded previous task checkpoint from {}".format(previous_task_checkpoint))
 
+    def save_after_task(self, path="./checkpoint.pth"):
+        state = {
+            'network': self._network.state_dict(),
+            'known_classes': self._known_classes,
+            'total_classes': self._total_classes,
+            'cur_task': self._cur_task,
+            'means': [torch.from_numpy(mean) for mean in self._means],
+            'R': self.R,
+        }
+        torch.save(state, path)
+        print("Model saved to {}".format(path))
     def next_task(self):
         try:
             self._network.update_task()
@@ -400,17 +420,6 @@ class Learner(BaseLearner):
                 self.labels_train.append([class_idx] * len(vectors))
                 class_mean = np.mean(vectors, axis=0)
                 self._means.append(class_mean)
-
-                # 计算协方差矩阵 # Compute covariance matrix
-                cov = np.cov(vectors, rowvar=False)
-                print("Class {} covariance matrix shape: {}".format(class_idx, cov.shape))
-                self._cov_matrix.append(cov)
-
-                # 提取对角线元素（方差），即各个特征的方差 # Extract diagonal elements (variances) of the covariance matrix
-                variances = np.diagonal(cov)
-                # 计算各个特征的标准差
-                std_deviations = np.sqrt(variances)
-                self._std_deviations_matrix.append(std_deviations)
             print("Generating pseudo-features for old classes from relations...")
     def _compute_relations(self):
         print("Computing class relations...")
