@@ -33,7 +33,7 @@ class SimpleNN(nn.Module):
         x = self.fc(x)  
         return x  
 class Learner(BaseLearner):
-    def __init__(self, args, previous_task_checkpoint=None):
+    def __init__(self, args):
         super().__init__(args)
         if 'adapter' not in args["backbone_type"]:
             raise NotImplementedError('Adapter requires Adapter backbone')
@@ -50,18 +50,19 @@ class Learner(BaseLearner):
         self.args = args
         self.R = None
         self._means = []
-        if previous_task_checkpoint is not None:
-            previous_checkpoint = torch.load(previous_task_checkpoint, map_location='cpu', weights_only=False)
-            self._old_network = BiLoRAIncNet(args, True)
-            self._old_network.load_state_dict(previous_checkpoint['network'])
-            self._old_network = self._old_network.freeze()
-            self.old_network_module_ptr = self._old_network
-            self._known_classes = previous_checkpoint['known_classes']
-            self._total_classes = previous_checkpoint['total_classes']
-            self._cur_task = previous_checkpoint['cur_task']
-            self._means = [mean.numpy() for mean in previous_checkpoint['means']]
-            self.R = previous_checkpoint['R']
-            print("Loaded previous task checkpoint from {}".format(previous_task_checkpoint))
+    
+    def init_from_previous_checkpoint(self, previous_task_checkpoint="./checkpoint.pth"):
+        previous_checkpoint = torch.load(previous_task_checkpoint, map_location='cpu', weights_only=False)
+        self._old_network = BiLoRAIncNet(self.args, True)
+        self._old_network.load_state_dict(previous_checkpoint['network'])
+        self._old_network = self._old_network.freeze()
+        self.old_network_module_ptr = self._old_network
+        self._known_classes = previous_checkpoint['known_classes']
+        self._total_classes = previous_checkpoint['total_classes']
+        self._cur_task = previous_checkpoint['cur_task']
+        self._means = [mean.numpy() for mean in previous_checkpoint['means']]
+        self.R = previous_checkpoint['R']
+        print("Loaded previous task checkpoint from {}".format(previous_task_checkpoint))
 
     def save_after_task(self, path="./checkpoint.pth"):
         state = {
