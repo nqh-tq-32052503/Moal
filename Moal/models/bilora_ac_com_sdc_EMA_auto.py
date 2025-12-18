@@ -55,7 +55,7 @@ class Learner(BaseLearner):
         previous_checkpoint = torch.load(previous_task_checkpoint, map_location='cpu', weights_only=False)
         self._old_network = BiLoRAIncNet(self.args, True)
         self._old_network.load_state_dict(previous_checkpoint['network'])
-        self._old_network = self._old_network.freeze()
+        self._old_network = self._old_network.freeze().to(self._device)
         self.old_network_module_ptr = self._old_network
         self._known_classes = previous_checkpoint['known_classes']
         self._total_classes = previous_checkpoint['total_classes']
