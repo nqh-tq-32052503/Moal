@@ -97,7 +97,7 @@ class BiLoRAAdapter(nn.Module):
         self.num_tasks = num_tasks
         self.device = device
         self.n_frq = n_frq
-        self.indices = [self.select_pos(t, self.dim).to(self.qkv.weight.device) for t in range(num_tasks)]
+        self.indices = [self.select_pos(t, self.dim).to(self.device) for t in range(num_tasks)]
         self.coef_k = nn.ParameterList([nn.Parameter(torch.randn(self.n_frq), requires_grad=True) for _ in range(num_tasks)]).to(self.device)
         self.coef_v = nn.ParameterList([nn.Parameter(torch.randn(self.n_frq), requires_grad=True) for _ in range(num_tasks)]).to(self.device)
     
