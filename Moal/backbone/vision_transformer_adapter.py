@@ -21,7 +21,7 @@ import torch
 import torch.nn as nn
 from timm.models.vision_transformer import PatchEmbed
 from timm.models.registry import register_model
-
+import torch.nn.functional as torch_func
 import logging
 import os
 from collections import OrderedDict
@@ -90,7 +90,42 @@ class Adapter(nn.Module):
 
         return output
 
+class BiLoRAAdapter(nn.Module):
+    def __init__(self, dim, n_frq=3000, num_tasks=10, device=torch.device("cuda")):
+        super().__init__()
+        self.dim = dim 
+        self.num_tasks = num_tasks
+        self.device = device
+        self.n_frq = n_frq
+        self.indices = [self.select_pos(t, self.dim).to(self.qkv.weight.device) for t in range(num_tasks)]
+        self.coef_k = nn.ParameterList([nn.Parameter(torch.randn(self.n_frq), requires_grad=True) for _ in range(num_tasks)]).to(self.device)
+        self.coef_v = nn.ParameterList([nn.Parameter(torch.randn(self.n_frq), requires_grad=True) for _ in range(num_tasks)]).to(self.device)
+    
+    def select_pos(self, t, dim, seed=777):
+        indices = torch.randperm(dim * dim, generator=torch.Generator().manual_seed(seed+t*10))[:self.n_frq]
+        indices = torch.stack([indices // dim, indices % dim], dim=0)
+        return indices
+    
+    def get_delta_w_k(self, task, alpha=300):
+        indices = self.indices[task]
+        F = torch.zeros(self.dim, self.dim).to(self.device)
+        F[indices[0,:], indices[1,:]] =  self.coef_k[task]
+        return torch.fft.ifft2(F, dim=(-2,-1)).real * alpha
+    
+    def get_delta_w_v(self, task, alpha=300):
+        indices = self.indices[task]
+        F = torch.zeros(self.dim, self.dim).to(self.device)
+        F[indices[0,:], indices[1,:]] =  self.coef_v[task]
+        return torch.fft.ifft2(F, dim=(-2,-1)).real * alpha
 
+    def forward(self, x, task=None, add_residual=True, residual=None):
+        residual = x if residual is None else residual
+        mlp_v = self.get_delta_w_v(task)
+        mlp_k = self.get_delta_w_k(task)
+        y = (mlp_v @ x) @ mlp_k
+        z = torch_func.relu(y)
+        out = (mlp_v @ z) @ mlp_k
+        return out 
 
 
 
@@ -163,17 +198,18 @@ class Block(nn.Module):
         self.mlp_drop = nn.Dropout(drop)
 
         if config.ffn_adapt:
-            self.adaptmlp = ZeroAdapter()
+            self.adaptmlp = BiLoRAAdapter(dim=dim)
+            # self.adaptmlp = ZeroAdapter()
             # self.adaptmlp = Adapter(self.config, dropout=0.1, bottleneck=config.ffn_num,
             #                         init_option=config.ffn_adapter_init_option,
             #                         adapter_scalar=config.ffn_adapter_scalar,
             #                         adapter_layernorm_option=config.ffn_adapter_layernorm_option,
             #                         )
 
-    def forward(self, x):
+    def forward(self, x, task=None):
         x = x + self.drop_path(self.attn(self.norm1(x)))
         if self.config.ffn_adapt and self.config.ffn_option == 'parallel':
-            adapt_x = self.adaptmlp(x, add_residual=False)
+            adapt_x = self.adaptmlp(x, task=task, add_residual=False)
 
         residual = x
         x = self.mlp_drop(self.act(self.fc1(self.norm2(x))))
@@ -181,7 +217,7 @@ class Block(nn.Module):
 
         if self.config.ffn_adapt:
             if self.config.ffn_option == 'sequential':
-                x = self.adaptmlp(x)
+                x = self.adaptmlp(x, task)
             elif self.config.ffn_option == 'parallel':
                 x = x + adapt_x
             else:
@@ -285,7 +321,7 @@ class VisionTransformer(nn.Module):
         if self.num_tokens == 2:
             self.head_dist = nn.Linear(self.embed_dim, self.num_classes) if num_classes > 0 else nn.Identity()
 
-    def forward_features(self, x):
+    def forward_features(self, x, task=None):
         B = x.shape[0]
         x = self.patch_embed(x)
 
@@ -298,7 +334,7 @@ class VisionTransformer(nn.Module):
             if self.tuning_config.vpt_on:
                 eee = self.embeddings[idx].expand(B, -1, -1)
                 x = torch.cat([eee, x], dim=1)
-            x = blk(x)
+            x = blk(x, task=task)
             if self.tuning_config.vpt_on:
                 x = x[:, self.tuning_config.vpt_num:, :]
 
@@ -312,7 +348,7 @@ class VisionTransformer(nn.Module):
         return outcome
 
     def forward(self, x, task=None):
-        x = self.forward_features(x,)
+        x = self.forward_features(x, task=task)
         if self.head_dist is not None:
             x, x_dist = self.head(x[0]), self.head_dist(x[1])  # x must be a tuple
             if self.training and not torch.jit.is_scripting():
