@@ -151,7 +151,7 @@ class Learner(BaseLearner):
             scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=self.args['tuned_epoch'],
                                                              eta_min=self.min_lr)
             self._init_train(train_loader, test_loader, optimizer, scheduler)
-            self._network.list_fc = nn.ModuleList()
+            self._network.list_ac = nn.ModuleList()
             self._network.update_fc(cosine_fc=True)
             self._network.update_fc()
             self._network.update_task()
