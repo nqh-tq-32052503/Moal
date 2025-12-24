@@ -540,8 +540,10 @@ class BiLoRAIncNet(BaseNet):
     def init_ac_fc(self):
         self.ac_model = None
         self.current_task = 0
-        self.list_fc = nn.ModuleList([CosineLinear(self.feature_dim, self.args["init_cls"])])
-        self.list_ac = nn.ModuleList()
+        self.list_fc = nn.ModuleList()
+        self.list_ac = nn.ModuleList([AC_Linear(self.feature_dim, self.args["Hidden"], self.args["init_cls"]).to(self._device)])
+        # self.list_fc = nn.ModuleList([CosineLinear(self.feature_dim, self.args["init_cls"])])
+        # self.list_ac = nn.ModuleList()
     
     def update_task(self):
         self.current_task += 1
@@ -557,7 +559,8 @@ class BiLoRAIncNet(BaseNet):
     def forward(self, x, task=None):
         x = self.backbone(x, task=task)
         if self.current_task == 0:
-            out = self.list_fc[0](x)
+            out = self.list_ac[0](x)
+            # out = self.list_fc[0](x)
             out.update({"features": x})
             return out
         else:

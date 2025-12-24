@@ -252,10 +252,12 @@ class Learner(BaseLearner):
                 inputs, targets = inputs.to(self._device), targets.to(self._device)
                 if self.model_type == 'bilora':
                     outputs = self._network(inputs, task=self._cur_task)
-                    logits = outputs["train_logits"]
+                    # logits = outputs["train_logits"]
+                    logits = outputs["logits"]
                 else:
                     outputs = self._network(inputs)
-                    logits = outputs["train_logits"]
+                    # logits = outputs["train_logits"]
+                    logits = outputs["logits"]
                 if run_cache:
                     self.output_caches.append(outputs)
                     self.label_caches.append({"input" : inputs, "label" : targets})
