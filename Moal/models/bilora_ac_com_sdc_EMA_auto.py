@@ -10,6 +10,7 @@ from utils.inc_net import SimpleCosineIncrementalNet, MultiBranchCosineIncrement
 from utils.AC_net import SimpleCosineIncrementalNet, SimpleVitNet_AL, BiLoRAIncNet
 from utils.data_manager import DataManager
 from models.base import BaseLearner
+from models.lora_drs_loss import AugmentedTripletLoss
 from backbone.linears import CosineLinear
 from utils.toolkit import target2onehot, tensor2numpy
 import copy
@@ -199,6 +200,8 @@ class Learner(BaseLearner):
 
     def _init_train(self, train_loader, test_loader, optimizer, scheduler):
         print("Initial training for the first task.")
+        ranking_criterion = AugmentedTripletLoss(margin=1.0).to(self._device)
+        ranking_lambda = 0.05
         for epoch in range(self.args['tuned_epoch']):
             self._network.train()
             losses = 0.0
@@ -207,11 +210,15 @@ class Learner(BaseLearner):
                 _, inputs, targets = train_batch
                 inputs, targets = inputs.to(self._device), targets.to(self._device)
                 if self.model_type == 'bilora':
-                    logits = self._network(inputs, task=self._cur_task)["logits"]
+                    outputs = self._network(inputs, task=self._cur_task)
+                    logits = outputs["logits"]
                 else:
-                    logits = self._network(inputs)["logits"]
+                    outputs = self._network(inputs)
+                    logits = outputs["logits"]
 
                 loss = F.cross_entropy(logits, targets)
+                ATL_loss = ranking_criterion(outputs['features'], targets, [])
+                loss = loss + ranking_lambda * ATL_loss
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
@@ -239,6 +246,8 @@ class Learner(BaseLearner):
         print("Progressive training for task {}".format(self._cur_task))
         self.output_caches = []
         self.label_caches = []
+        ranking_criterion = AugmentedTripletLoss(margin=1.0).to(self._device)
+        ranking_lambda = 0.05
         EMA_model = self._network.copy().freeze()
         alpha = self.args['alpha']
 
@@ -262,7 +271,8 @@ class Learner(BaseLearner):
                     self.output_caches.append(outputs)
                     self.label_caches.append({"input" : inputs, "label" : targets})
                 loss_ce = F.cross_entropy(logits, targets)
-                loss = loss_ce
+                ATL_loss = ranking_criterion(outputs['features'], targets, self._means)
+                loss = loss_ce + ranking_lambda * ATL_loss
 
                 optimizer.zero_grad()
                 loss.backward()
