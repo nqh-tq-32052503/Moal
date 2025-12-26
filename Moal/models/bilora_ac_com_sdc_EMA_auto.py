@@ -374,19 +374,23 @@ class Learner(BaseLearner):
         print('selected lambda =',ridge)
         return ridge
 
-    def update_separate_fc(self, W, R, A, L):
-        embed_dim, num_classes = W.shape
-        num_class_per_task = self.args['increment']
-        num_tasks = num_classes // num_class_per_task
-        outputs = []
-        for t in range(num_tasks):
-            start_class = t * num_class_per_task
-            end_class = start_class + num_class_per_task
-            W_t = W[:, start_class:end_class]
-            L_t = L[:, start_class:end_class]
-            Q_t = W_t + R @ A.T @ (L_t - A @ W_t)
-            outputs.append(Q_t)
-        return torch.cat(outputs, dim=1)
+    def update_separate_fc_optimized(self, W, R, A, L):
+        inner_diff = L - torch.matmul(A, W)
+        update_term = torch.matmul(torch.matmul(R, A.t()), inner_diff)
+        return W + update_term
+    # def update_separate_fc(self, W, R, A, L):
+    #     embed_dim, num_classes = W.shape
+    #     num_class_per_task = self.args['increment']
+    #     num_tasks = num_classes // num_class_per_task
+    #     outputs = []
+    #     for t in range(num_tasks):
+    #         start_class = t * num_class_per_task
+    #         end_class = start_class + num_class_per_task
+    #         W_t = W[:, start_class:end_class]
+    #         L_t = L[:, start_class:end_class]
+    #         Q_t = W_t + R @ A.T @ (L_t - A @ W_t)
+    #         outputs.append(Q_t)
+    #     return torch.cat(outputs, dim=1)
 
     def IL_align(self, trainloader, model: BiLoRAIncNet):
         print("Incremental class alignment (Knowledge Memorization)...")
@@ -421,7 +425,7 @@ class Learner(BaseLearner):
                     new_activation @ R @ new_activation.t()) @ new_activation @ R
 
                 # W = W + R @ new_activation.t() @ (label_onehot - new_activation @ W)
-                W = self.update_separate_fc(W=W, R=R, A=new_activation, L=label_onehot)
+                W = self.update_separate_fc_optimized(W=W, R=R, A=new_activation, L=label_onehot)
             print("Knowledge Memorization completed.")
             print("Updated weight matrix W shape: {}".format(W.shape))
             print("Updated correlation matrix R shape: {}".format(R.shape))
@@ -554,7 +558,7 @@ class Learner(BaseLearner):
                     new_activation @ R @ new_activation.t()) @ new_activation @ R
 
                 # W = W + R @ new_activation.t() @ (label_onehot - new_activation @ W)
-                W = self.update_separate_fc(W=W, R=R, A=new_activation, L=label_onehot)
+                W = self.update_separate_fc_optimized(W=W, R=R, A=new_activation, L=label_onehot)
 
         print('numpy inverse')
         # model.list_ac[-1].fc[-1].weight = torch.nn.parameter.Parameter(torch.t(W.float()))
