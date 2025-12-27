@@ -30,5 +30,7 @@
     "ffn_num": 64,
     "optimizer": "sgd",
     "vpt_type": "shallow",
-    "prompt_token_num": 5
+    "prompt_token_num": 5,
+    "use_ranking_loss" : false,
+    "use_fft_attn": false
 }

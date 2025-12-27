@@ -48,6 +48,7 @@ class Learner(BaseLearner):
         self.weight_decay = args["weight_decay"] if args["weight_decay"] is not None else 0.0005
         self.min_lr = args['min_lr'] if args['min_lr'] is not None else 1e-8
         self.args = args
+        self.use_ranking_loss = args.get('use_ranking_loss', False)
         self.R = None
         self._means = []
     
@@ -217,8 +218,9 @@ class Learner(BaseLearner):
                     logits = outputs["logits"]
 
                 loss = F.cross_entropy(logits, targets)
-                ATL_loss = ranking_criterion(outputs['features'], targets, [])
-                loss = loss + ranking_lambda * ATL_loss
+                if self.use_ranking_loss:
+                    ATL_loss = ranking_criterion(outputs['features'], targets, [])
+                    loss = loss + ranking_lambda * ATL_loss
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
@@ -271,8 +273,11 @@ class Learner(BaseLearner):
                     self.output_caches.append(outputs)
                     self.label_caches.append({"input" : inputs, "label" : targets})
                 loss_ce = F.cross_entropy(logits, targets)
-                ATL_loss = ranking_criterion(outputs['features'], targets, self._means)
-                loss = loss_ce + ranking_lambda * ATL_loss
+                if self.use_ranking_loss:
+                    ATL_loss = ranking_criterion(outputs['features'], targets, self._means)
+                    loss = loss_ce + ranking_lambda * ATL_loss
+                else:
+                    loss = loss_ce
 
                 optimizer.zero_grad()
                 loss.backward()

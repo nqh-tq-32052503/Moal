@@ -396,10 +396,10 @@ class VisionTransformer(nn.Module):
 #     return model
 
 
-def vit_base_patch16_224_bilora(pretrained=True, **kwargs):
+def vit_base_patch16_224_bilora(pretrained=True, use_fft_attn=False, **kwargs):
     from models.bilora import VisionTransformerBiLoRA
     model = VisionTransformerBiLoRA(num_classes=0, patch_size=16, embed_dim=768, depth=12, num_heads=12, mlp_ratio=4, qkv_bias=True,
-        norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
+        norm_layer=partial(nn.LayerNorm, eps=1e-6), use_fft_attn=use_fft_attn, **kwargs)
 
     if pretrained:
         import timm

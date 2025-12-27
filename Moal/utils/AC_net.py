@@ -85,7 +85,7 @@ def get_backbone(args, pretrained=False):
             return model.eval()
         elif args["model_name"] == "bilora_ac_com_sdc_ema_auto" :
             from backbone import vision_transformer_adapter
-            model = vision_transformer_adapter.vit_base_patch16_224_bilora(pretrained=True)
+            model = vision_transformer_adapter.vit_base_patch16_224_bilora(pretrained=True, use_fft_attn=args["use_fft_attn"])
             model.out_dim=768
             return model.eval()
     else:
